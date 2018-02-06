@@ -9,19 +9,6 @@ import org.junit.Test
 class AssetsRequestTest : BaseApiTest() {
 
     @Test
-    fun testGet() {
-        val asset = percolateApi
-                .assets()
-                .get(AssetsGetParams("asset:123"))
-                .execute()
-                .body()
-
-        Assert.assertNotNull(asset)
-        Assert.assertNotNull(asset.data)
-        Assert.assertEquals("asset:123", asset.data.id)
-    }
-
-    @Test
     fun testList() {
         val assets = percolateApi
                 .assets()

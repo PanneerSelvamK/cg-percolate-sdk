@@ -9,19 +9,6 @@ import org.junit.Test
 class VariantsRequestTest : BaseApiTest() {
 
     @Test
-    fun testGet() {
-        val variant = percolateApi
-                .variants()
-                .get(VariantsGetParams("variant:123"))
-                .execute()
-                .body()
-
-        Assert.assertNotNull(variant)
-        Assert.assertNotNull(variant.data)
-        Assert.assertEquals("variant:123", variant.data.id)
-    }
-
-    @Test
     fun testList() {
         val variants = percolateApi
                 .variants()
