@@ -120,12 +120,12 @@ public class RetrofitLogic {
             }
         });
         
-        // SSL Pinning
-        final CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                // certificate valid till 1st May 2019
-                .add("percolate.com", "sha256/evbucDPd+voFR9afo6V93Ffxr2PF1M8oeGSBDC0uVR0=")
-                .build();
-        okHttpClientBuilder.certificatePinner(certificatePinner);
+        //SSL Pinning
+        final CertificatePinner certificatePinner = new CertificatePinner.Builder()
+                // certificate valid till 1st May 2019
+                .add("percolate.com", "sha256/evbucDPd+voFR9afo6V93Ffxr2PF1M8oeGSBDC0uVR0=")
+                .build();
+        okHttpClientBuilder.certificatePinner(certificatePinner);
         
         return okHttpClientBuilder.build();
     }
