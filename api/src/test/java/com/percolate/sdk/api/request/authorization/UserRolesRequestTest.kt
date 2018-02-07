@@ -4,6 +4,7 @@ import com.percolate.sdk.api.BaseApiTest
 import com.percolate.sdk.api.request.license.LicenseParams
 import org.junit.Assert
 import org.junit.Test
+import java.util.*
 
 class UserRolesRequestTest : BaseApiTest() {
 
@@ -11,15 +12,11 @@ class UserRolesRequestTest : BaseApiTest() {
     fun testGet() {
         val userRoles = percolateApi
                 .userRoles()
-                .get(UserRolesParams("123"))
+                .get(UserRolesV5Params().userIds(Arrays.asList("123")))
                 .execute()
                 .body();
 
         Assert.assertNotNull(userRoles)
-        Assert.assertNotNull(userRoles.userRolesLicenseData)
-        Assert.assertEquals(1, userRoles.userRolesLicenseData.size.toLong())
-        Assert.assertNotNull(userRoles.userRolesLicenseData[0].capabilities)
-        Assert.assertEquals(145, userRoles.userRolesLicenseData[0].capabilities.size.toLong())
     }
 
     @Test

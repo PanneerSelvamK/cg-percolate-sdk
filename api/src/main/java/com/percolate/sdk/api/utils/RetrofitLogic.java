@@ -119,7 +119,7 @@ public class RetrofitLogic {
                         url.pathSegments().get(0).equalsIgnoreCase("api");
             }
         });
-
+        
         return okHttpClientBuilder.build();
     }
 
