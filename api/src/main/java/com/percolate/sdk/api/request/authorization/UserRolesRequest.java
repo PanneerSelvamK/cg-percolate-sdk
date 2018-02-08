@@ -18,17 +18,7 @@ public class UserRolesRequest {
     public UserRolesRequest(@NotNull PercolateApi context) {
         this.service = new RetrofitApiFactory(context).getService(UserRolesService.class);
     }
-
-    /**
-     * Query user roles endpoint.
-     *
-     * @param params API params.
-     * @return {@link Call} object.
-     */
-    public Call<UserRoles> get(@NotNull final UserRolesParams params) {
-        return service.get(params.getUserId(), params.getParams());
-    }
-
+    
     /**
      * Query user roles endpoint.
      *

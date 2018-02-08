@@ -15,9 +15,6 @@ import java.util.Map;
  */
 interface UserRolesService {
 
-    @GET(Endpoints.API_V3_PATH + "/authorization/{user_id}")
-    Call<UserRoles> get(@Path("user_id") String userId, @QueryMap Map<String, Object> params);
-
     @GET(Endpoints.API_V5_PATH + "/user_role/")
     Call<UserRolesV5> get(@QueryMap Map<String, Object> params);
 }
