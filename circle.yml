@@ -6,6 +6,8 @@ machine:
 dependencies:
   pre:
     - pip install codecov
+  override:
+    - echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
 test:
   override:
   - ./gradlew --info install test coverage
