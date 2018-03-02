@@ -29,6 +29,11 @@ public class CommentParams {
         return this;
     }
 
+    public CommentParams ids(String ids){
+        params.put("ids", ids);
+        return this;
+    }
+
     public CommentParams orderBy(String orderBy) {
         params.put("order_by", orderBy);
         return this;
