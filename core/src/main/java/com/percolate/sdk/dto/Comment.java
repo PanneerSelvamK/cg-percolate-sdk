@@ -37,6 +37,9 @@ public class Comment implements Serializable, HasExtraFields {
     @JsonProperty("scope_id")
     protected String scopeUID;
 
+    @JsonProperty("parent_comment_id")
+    protected String parentCommentId;
+
     @JsonProperty("context_type")
     protected String contextType;
 
@@ -119,6 +122,14 @@ public class Comment implements Serializable, HasExtraFields {
 
     public void setContextExt(CommentContextExt contextExt) {
         this.contextExt = contextExt;
+    }
+
+    public String getParentCommentId() {
+        return parentCommentId;
+    }
+
+    public void setParentCommentId(String parentCommentId) {
+        this.parentCommentId = parentCommentId;
     }
 
     public String getCreatedAt() {
