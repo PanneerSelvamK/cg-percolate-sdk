@@ -14,9 +14,9 @@ class CampaignsRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(campaigns)
-        Assert.assertNotNull(campaigns.data)
-        Assert.assertEquals(2, campaigns.data.size.toLong())
+        val data = campaigns?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(2, data!!.size.toLong())
     }
 
     @Test
@@ -27,8 +27,8 @@ class CampaignsRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(singleCampaign)
-        Assert.assertNotNull(singleCampaign.data)
-        Assert.assertEquals("123", singleCampaign.data.id)
+        val data = singleCampaign?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals("123", data!!.id)
     }
 }

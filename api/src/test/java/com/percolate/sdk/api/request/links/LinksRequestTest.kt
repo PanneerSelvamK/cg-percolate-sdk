@@ -14,8 +14,7 @@ class LinksRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(link)
-        Assert.assertNotNull(link.id)
+        Assert.assertNotNull(link?.id)
     }
 
     @Test
@@ -26,7 +25,6 @@ class LinksRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(link)
-        Assert.assertNotNull(link.id)
+        Assert.assertNotNull(link?.id)
     }
 }

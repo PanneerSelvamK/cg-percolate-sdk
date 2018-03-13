@@ -15,9 +15,9 @@ class LicenseChannelRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(licenseChannels)
-        Assert.assertNotNull(licenseChannels.data)
-        Assert.assertEquals(2, licenseChannels.data.size.toLong())
+        val data = licenseChannels?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(2, data!!.size.toLong())
     }
 
     @Test
@@ -28,8 +28,6 @@ class LicenseChannelRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleLicenseChannel)
-        Assert.assertNotNull(singleLicenseChannel.data)
-        Assert.assertNotNull(singleLicenseChannel.data.id)
+        Assert.assertNotNull(singleLicenseChannel?.data?.id)
     }
 }

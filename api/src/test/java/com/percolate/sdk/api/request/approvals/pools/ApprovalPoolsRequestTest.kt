@@ -15,8 +15,8 @@ class ApprovalPoolsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        assertNotNull(approvalPools)
-        assertNotNull(approvalPools.data)
-        assertEquals(2, approvalPools.data.size.toLong())
+        val data = approvalPools?.data
+        assertNotNull(data)
+        assertEquals(2, data!!.size.toLong())
     }
 }

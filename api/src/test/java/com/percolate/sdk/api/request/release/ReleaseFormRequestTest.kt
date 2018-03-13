@@ -14,7 +14,6 @@ class ReleaseFormRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(releaseFormHtml)
-        Assert.assertNotNull(releaseFormHtml.html)
+        Assert.assertNotNull(releaseFormHtml?.html)
     }
 }

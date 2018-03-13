@@ -14,9 +14,9 @@ class PreferenceRequestTest: BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(preference)
-        Assert.assertNotNull(preference.data)
-        Assert.assertEquals(preference.data.size, 1)
+        val data = preference?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(data!!.size, 1)
     }
 
 

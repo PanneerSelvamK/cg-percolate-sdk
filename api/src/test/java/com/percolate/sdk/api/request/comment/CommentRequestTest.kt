@@ -15,9 +15,9 @@ class CommentRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(comments)
-        Assert.assertNotNull(comments.comments)
-        Assert.assertEquals(3, comments.comments.size.toLong())
+        val commentsList = comments?.comments
+        Assert.assertNotNull(commentsList)
+        Assert.assertEquals(3, commentsList!!.size.toLong())
     }
 
     @Test
@@ -28,7 +28,6 @@ class CommentRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(commentData)
-        Assert.assertNotNull(commentData.comment)
+        Assert.assertNotNull(commentData?.comment)
     }
 }

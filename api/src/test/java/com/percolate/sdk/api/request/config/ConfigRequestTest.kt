@@ -14,8 +14,8 @@ class ConfigRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(config)
-        Assert.assertNotNull(config.data)
-        Assert.assertEquals(3, config.data.size.toLong())
+        val data = config?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

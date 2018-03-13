@@ -17,8 +17,9 @@ class MetadataRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(metadata)
-        Assert.assertNotNull(metadata.data)
-        Assert.assertEquals("metadata:4", metadata.data.id)
+        val data = metadata?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals("metadata:4", data!!.id)
     }
 
     @Test
@@ -29,9 +30,9 @@ class MetadataRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(metadata)
-        Assert.assertNotNull(metadata.data)
-        Assert.assertEquals(4, metadata.data.size)
+        val data = metadata?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(4, data!!.size)
     }
 
     @Test
@@ -42,9 +43,9 @@ class MetadataRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(metadata)
-        Assert.assertNotNull(metadata.data)
-        Assert.assertEquals("metadata:9", metadata.data.id)
+        val data = metadata?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals("metadata:9", data!!.id)
     }
 
     @Test
@@ -55,8 +56,8 @@ class MetadataRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(metadata)
-        Assert.assertNotNull(metadata.data)
-        Assert.assertEquals("metadata:123", metadata.data.id)
+        val data = metadata?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals("metadata:123", data!!.id)
     }
 }

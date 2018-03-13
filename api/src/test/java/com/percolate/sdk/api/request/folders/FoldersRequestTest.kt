@@ -1,7 +1,6 @@
 package com.percolate.sdk.api.request.activity
 
 import com.percolate.sdk.api.BaseApiTest
-import com.percolate.sdk.api.request.folders.FoldersGetParams
 import com.percolate.sdk.api.request.folders.FoldersListParams
 import org.junit.Assert
 import org.junit.Test
@@ -16,8 +15,8 @@ class FoldersRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(folders)
-        Assert.assertNotNull(folders.data)
-        Assert.assertEquals(3, folders.data.size.toLong())
+        val data = folders?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }
