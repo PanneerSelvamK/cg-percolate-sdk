@@ -1,11 +1,17 @@
 package com.percolate.sdk.api;
 
-import okhttp3.*;
-import okio.Buffer;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.Protocol;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import okio.Buffer;
 
 /**
  * This {@link Interceptor} gets plugged into Retrofit's okhttp client
@@ -39,6 +45,7 @@ public class UnitTestingHttpInterceptor implements Interceptor {
                 .protocol(Protocol.HTTP_1_1)
                 .code(200)
                 .body(responseBody)
+                .message("")
                 .build();
     }
 }

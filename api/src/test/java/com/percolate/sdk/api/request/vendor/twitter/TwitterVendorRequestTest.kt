@@ -71,7 +71,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertEquals(4, tweetList?.size?.toLong())
+        Assert.assertEquals(4L, tweetList?.size?.toLong())
     }
 
     @Test
