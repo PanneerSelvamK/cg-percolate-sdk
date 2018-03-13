@@ -14,9 +14,9 @@ class FacebookMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookMonitoringObjects)
-        Assert.assertNotNull(facebookMonitoringObjects.data)
-        Assert.assertEquals(6, facebookMonitoringObjects.data.size.toLong())
+        val data = facebookMonitoringObjects?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(6, data!!.size.toLong())
     }
 
     @Test
@@ -28,7 +28,7 @@ class FacebookMonitoringRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(facebookMonitoringObjectsList)
-        Assert.assertEquals(1, facebookMonitoringObjectsList.size.toLong())
+        Assert.assertEquals(1, facebookMonitoringObjectsList!!.size.toLong())
     }
 
     @Test
@@ -39,9 +39,9 @@ class FacebookMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookMonitoringObjects)
-        Assert.assertNotNull(facebookMonitoringObjects.data)
-        Assert.assertEquals(1, facebookMonitoringObjects.data.size.toLong())
+        val data = facebookMonitoringObjects?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(1, data!!.size.toLong())
     }
 
     @Test
@@ -52,9 +52,9 @@ class FacebookMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookConversationList)
-        Assert.assertNotNull(facebookConversationList.data)
-        Assert.assertEquals(6, facebookConversationList.data.size.toLong())
+        val data = facebookConversationList?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(6, data!!.size.toLong())
     }
 
     @Test
@@ -65,8 +65,8 @@ class FacebookMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookConversationThread)
-        Assert.assertNotNull(facebookConversationThread.data)
-        Assert.assertEquals(24, facebookConversationThread.data.size.toLong())
+        val data = facebookConversationThread?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(24, data!!.size.toLong())
     }
 }

@@ -14,11 +14,12 @@ class InstagramMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(instagramMonitoringObjects)
-        Assert.assertNotNull(instagramMonitoringObjects.data)
-        Assert.assertEquals(4, instagramMonitoringObjects.data.size.toLong())
-        Assert.assertNotNull(instagramMonitoringObjects.includes)
-        Assert.assertEquals(4, instagramMonitoringObjects.includes.posts.size.toLong())
+        val data = instagramMonitoringObjects?.data
+        val includes = instagramMonitoringObjects?.includes
+        Assert.assertNotNull(data)
+        Assert.assertNotNull(includes)
+        Assert.assertEquals(4, data!!.size.toLong())
+        Assert.assertEquals(4, includes!!.posts.size.toLong())
     }
 
     @Test
@@ -29,9 +30,6 @@ class InstagramMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(instagramSingleMonitoringObject)
-        Assert.assertNotNull(instagramSingleMonitoringObject.data)
-        Assert.assertNotNull(instagramSingleMonitoringObject.data.xobj)
-        Assert.assertNotNull(instagramSingleMonitoringObject.data.xobj.id)
+        Assert.assertNotNull(instagramSingleMonitoringObject?.data?.xobj?.id)
     }
 }

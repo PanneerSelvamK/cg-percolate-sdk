@@ -14,8 +14,8 @@ class TopicsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(topics)
-        Assert.assertNotNull(topics.data)
-        Assert.assertEquals(4, topics.data.size.toLong())
+        val data = topics?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(4, data!!.size.toLong())
     }
 }

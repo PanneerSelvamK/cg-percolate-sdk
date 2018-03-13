@@ -15,9 +15,9 @@ class FollowersRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(followers)
-        Assert.assertNotNull(followers.followers)
-        Assert.assertEquals(2, followers.followers.size.toLong())
+        val followersList = followers?.followers
+        Assert.assertNotNull(followersList)
+        Assert.assertEquals(2, followersList!!.size.toLong())
     }
 
     @Test
@@ -28,8 +28,7 @@ class FollowersRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(follower)
-        Assert.assertNotNull(follower.data)
+        Assert.assertNotNull(follower?.data)
     }
 
     @Test

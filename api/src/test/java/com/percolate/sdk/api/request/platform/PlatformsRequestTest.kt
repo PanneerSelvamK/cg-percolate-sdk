@@ -14,8 +14,8 @@ class PlatformsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(platforms)
-        Assert.assertNotNull(platforms.data)
-        Assert.assertEquals(6, platforms.data.size.toLong())
+        val data = platforms?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(6, data!!.size.toLong())
     }
 }

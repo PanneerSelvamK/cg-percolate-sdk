@@ -15,9 +15,9 @@ class ApprovalWorkflowHistoryRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(workflowHistory)
-        Assert.assertNotNull(workflowHistory.events)
-        Assert.assertEquals(2, workflowHistory.events.size.toLong())
+        val events = workflowHistory?.events
+        Assert.assertNotNull(events)
+        Assert.assertEquals(2, events!!.size.toLong())
     }
 
     @Test
@@ -28,7 +28,6 @@ class ApprovalWorkflowHistoryRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(workflowHistory)
-        Assert.assertNotNull(workflowHistory.events)
+        Assert.assertNotNull(workflowHistory?.events)
     }
 }

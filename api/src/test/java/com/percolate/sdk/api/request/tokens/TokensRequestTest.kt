@@ -14,9 +14,9 @@ class TokensRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tokens)
-        Assert.assertNotNull(tokens.data)
-        Assert.assertEquals(11, tokens.data.size.toLong())
+        val data = tokens?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(11, data!!.size.toLong())
     }
 
     @Test

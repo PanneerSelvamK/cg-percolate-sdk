@@ -14,8 +14,8 @@ class LicenseRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(licenses)
-        Assert.assertNotNull(licenses.licenses)
-        Assert.assertEquals(4, licenses.licenses.size.toLong())
+        val licensesList = licenses?.licenses
+        Assert.assertNotNull(licensesList)
+        Assert.assertEquals(4, licensesList!!.size.toLong())
     }
 }

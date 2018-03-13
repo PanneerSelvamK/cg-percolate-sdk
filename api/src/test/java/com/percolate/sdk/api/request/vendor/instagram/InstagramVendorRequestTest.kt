@@ -15,12 +15,9 @@ class InstagramVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(instagramMedia)
-        Assert.assertNotNull(instagramMedia.data)
-        Assert.assertNotNull(instagramMedia.data.id)
-        Assert.assertNotNull(instagramMedia.data.comments)
-        Assert.assertNotNull(instagramMedia.data.comments.data)
-        Assert.assertEquals(3, instagramMedia.data.comments.data.size.toLong())
+        val data = instagramMedia?.data?.comments?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 
     @Test
@@ -31,8 +28,8 @@ class InstagramVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(instagramMediaComments)
-        Assert.assertNotNull(instagramMediaComments.data)
-        Assert.assertEquals(3, instagramMediaComments.data.size.toLong())
+        val data = instagramMediaComments?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

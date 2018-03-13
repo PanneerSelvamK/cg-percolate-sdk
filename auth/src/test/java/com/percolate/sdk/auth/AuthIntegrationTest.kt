@@ -52,7 +52,7 @@ class AuthIntegrationTest {
             val mediaType = MediaType.parse("application/json")
             val responseBody = ResponseBody.create(mediaType, input.size(), input)
 
-            return Response.Builder().request(request).protocol(Protocol.HTTP_1_1).code(200).body(responseBody).build()
+            return Response.Builder().request(request).protocol(Protocol.HTTP_1_1).code(200).body(responseBody).message("").build()
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.percolate.sdk.api.request.media
 
 import com.percolate.sdk.api.BaseApiTest
-import com.percolate.sdk.dto.MediaMetaData
 import okhttp3.RequestBody
 import org.junit.Assert
 import org.junit.Test
@@ -18,7 +17,7 @@ class MediaRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(mediaItems)
-        Assert.assertFalse(mediaItems.isEmpty())
+        Assert.assertFalse(mediaItems!!.isEmpty())
         Assert.assertEquals(2, mediaItems.size.toLong())
     }
 
@@ -33,7 +32,6 @@ class MediaRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(media)
-        Assert.assertNotNull(media.uid)
+        Assert.assertNotNull(media?.uid)
     }
 }

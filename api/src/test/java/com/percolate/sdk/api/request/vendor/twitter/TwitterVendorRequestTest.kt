@@ -15,8 +15,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterUser)
-        Assert.assertNotNull(twitterUser.id)
+        Assert.assertNotNull(twitterUser?.id)
     }
 
     @Test
@@ -27,8 +26,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tweet)
-        Assert.assertNotNull(tweet.id)
+        Assert.assertNotNull(tweet?.id)
     }
 
     @Test
@@ -39,8 +37,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterUser)
-        Assert.assertNotNull(twitterUser.id)
+        Assert.assertNotNull(twitterUser?.id)
     }
 
     @Test
@@ -51,8 +48,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tweet)
-        Assert.assertNotNull(tweet.id)
+        Assert.assertNotNull(tweet?.id)
     }
 
     @Test
@@ -63,11 +59,8 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterRelationships)
-        Assert.assertNotNull(twitterRelationships.relationship)
-        Assert.assertNotNull(twitterRelationships.relationship.source)
-        Assert.assertNotNull(twitterRelationships.relationship.source.id)
-        Assert.assertNotNull(twitterRelationships.relationship.target.id)
+        Assert.assertNotNull(twitterRelationships?.relationship?.source?.id)
+        Assert.assertNotNull(twitterRelationships?.relationship?.target?.id)
     }
 
     @Test
@@ -78,8 +71,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tweetList)
-        Assert.assertEquals(4, tweetList.size.toLong())
+        Assert.assertEquals(4L, tweetList?.size?.toLong())
     }
 
     @Test
@@ -90,8 +82,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterUser)
-        Assert.assertNotNull(twitterUser.id)
+        Assert.assertNotNull(twitterUser?.id)
     }
 
     @Test
@@ -102,8 +93,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterUser)
-        Assert.assertNotNull(twitterUser.id)
+        Assert.assertNotNull(twitterUser?.id)
     }
 
     @Test
@@ -114,8 +104,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterConversationMessage)
-        Assert.assertNotNull(twitterConversationMessage.id)
+        Assert.assertNotNull(twitterConversationMessage?.id)
     }
 
     @Test
@@ -126,8 +115,7 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tweet)
-        Assert.assertNotNull(tweet.id)
+        Assert.assertNotNull(tweet?.id)
     }
 
     @Test
@@ -138,7 +126,6 @@ class TwitterVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterUser)
-        Assert.assertNotNull(twitterUser.id)
+        Assert.assertNotNull(twitterUser?.id)
     }
 }
