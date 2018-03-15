@@ -1,19 +1,24 @@
 version: 2
+
 jobs:
   build:
-    machine:
-      java:
-        version: oraclejdk8
-      python:
-        version: 2.7.10
+#    machine:
+#      java:
+#        version: oraclejdk8
+#      python:
+#        version: 2.7.10
+    docker:
+      - image: circleci/android:api-26-alpha
     steps:
       - checkout
       - run:
           name: pre-dependencies
           command: pip install codecov
-      - run:
-          name: override-dependencies
-          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
+      - run: sdkmanager --install "ndk-bundle"
+      - run: sdkmanager --licenses
+#      - run:
+#          name: override-dependencies
+#          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
 
 
 
