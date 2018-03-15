@@ -1,4 +1,4 @@
-package com.percoalte.sdk.python.bridge;
+package com.percolate.sdk.python.bridge;
 
 import py4j.GatewayServer;
 
