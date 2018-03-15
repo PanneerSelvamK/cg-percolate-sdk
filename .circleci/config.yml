@@ -6,8 +6,6 @@ jobs:
         version: oraclejdk8
       python:
         version: 2.7.10
-    docker:
-      - image: circleci/android:api-25
     steps:
       - checkout
       - run:
