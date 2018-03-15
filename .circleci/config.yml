@@ -8,11 +8,15 @@ jobs:
         version: oraclejdk8
       python:
         version: 2.7.10
-dependencies:
-  pre:
+- run:
+  name: pre-dependencies
+  command:
     - pip install codecov
-  override:
+- run:
+  name: override-dependencies
+  command:
     - echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
+
 test:
   override:
   - ./gradlew --info install test coverage
