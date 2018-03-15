@@ -3,19 +3,19 @@ jobs:
   build:
     steps:
       - checkout
+      - run:
+        name: pre-dependencies
+        command: pip install codecov
+      - run:
+        name: override-dependencies
+        command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
     machine:
       java:
         version: oraclejdk8
       python:
         version: 2.7.10
-- run:
-  name: pre-dependencies
-  command:
-    - pip install codecov
-- run:
-  name: override-dependencies
-  command:
-    - echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
+
+
 
 test:
   override:
