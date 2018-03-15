@@ -1,6 +1,13 @@
 version: 2
 jobs:
   build:
+    machine:
+      java:
+        version: oraclejdk8
+      python:
+        version: 2.7.10
+    docker:
+      - image: circleci/android:api-25
     steps:
       - checkout
       - run:
@@ -9,11 +16,7 @@ jobs:
       - run:
           name: override-dependencies
           command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
-    machine:
-      java:
-        version: oraclejdk8
-      python:
-        version: 2.7.10
+
 
 
 
