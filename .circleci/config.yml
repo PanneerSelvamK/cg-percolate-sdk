@@ -1,11 +1,11 @@
 version: 2
 jobs:
   build:
-    steps:
-      - java:
-          version: oraclejdk8
-      - python:
-          version: 2.7.10
+    machine:
+      java:
+        version: oraclejdk8
+      python:
+        version: 2.7.10
 dependencies:
   pre:
     - pip install codecov
