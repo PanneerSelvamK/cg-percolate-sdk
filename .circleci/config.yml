@@ -9,7 +9,7 @@ jobs:
 #        version: 2.7.10
     docker:
       - image: circleci/android:api-26-alpha
-      - image: circleci/python:2.7.10
+      - image: circleci/python:3.6.1
     steps:
       - checkout
       - run:
