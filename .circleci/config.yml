@@ -14,15 +14,15 @@ jobs:
       - checkout
       - run:
           name: pre-dependencies
-          command: pip install --user codecov; sdkmanager --licenses;
+          command: pip install --user codecov; sdkmanager --licenses; ./gradlew --info install test coverage; codecov
 #      - run: sdkmanager --install "ndk-bundle"
 #      - run: sdkmanager --licenses
 #      - run:
 #          name: override-dependencies
 #          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
-      - run:
-          name: override-test
-          command: ./gradlew --info install test coverage
+#      - run:
+#          name: override-test
+#          command:
 #      - run:
 #          name: post-test
 #          command: npm install codecov
