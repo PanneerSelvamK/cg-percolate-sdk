@@ -14,8 +14,7 @@ jobs:
       - checkout
       - run:
           name: pre-dependencies
-          command:
-            - pip install --user codecov
+          command: pip install --user codecov; sdkmanager --licenses;
 #      - run: sdkmanager --install "ndk-bundle"
 #      - run: sdkmanager --licenses
 #      - run:
