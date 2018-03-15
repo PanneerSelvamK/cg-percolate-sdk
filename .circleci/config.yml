@@ -25,5 +25,8 @@ jobs:
           command: ./gradlew --info install test coverage
       - run:
           name: post-test
+          command: npm install codecov
+      - run:
+          name: post-test
           command: codecov
 
