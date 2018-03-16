@@ -17,16 +17,16 @@ jobs:
 #          name: pre-dependencies
 #          command: pip install --user codecov
       - run: npm install codecov --save-dev
-      - run: sdkmanager --licenses
+#      - run: sdkmanager --licenses
 #      - run:
 #          name: override-dependencies
 #          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
-      - run:
-          name: override-test
-          command: ./gradlew --info install test coverage
-      - run:
-          name: post-test
-          command: npm install codecov
+#      - run:
+#          name: override-test
+#          command: ./gradlew --info install test coverage
+#      - run:
+#          name: post-test
+#          command: npm install codecov
       - run:
           name: post-test
           command: codecov
