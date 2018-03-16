@@ -29,8 +29,8 @@ jobs:
 #          command: npm install codecov
       - run:
           name: ls
-          command: cd node_modules/codecov; ls -a
+          command: cd node_modules/codecov/bin; ls -a
       - run:
           name: post-test
-          command: cd node_modules/codecov/codecov
+          command: cd node_modules/codecov/bin/codecov
 
