@@ -29,5 +29,5 @@ jobs:
 #          command: npm install codecov
       - run:
           name: post-test
-          command: codecov
+          command: ../codecov
 
