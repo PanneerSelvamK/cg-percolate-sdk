@@ -42,6 +42,8 @@ workflows:
     test:
       jobs:
         - build
-        - codecov
+        - codecov:
+          requires:
+            - build
 
 
