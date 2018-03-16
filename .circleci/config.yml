@@ -1,43 +1,43 @@
 version: 2
-jobs:
-  build:
-#    machine:
-#      java:
-#        version: oraclejdk8
-#      python:
-#        version: 2.7.10
-    docker:
-      - image: circleci/android:api-26-alpha
-      - image: circleci/python:3.6.1
-    steps:
-      - checkout
-#      - run:
-#          name: pre-dependencies
-#          command: pip install --user codecov
-      - run: sdkmanager --licenses
-#      - run:
-#          name: override-dependencies
-#          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
-      - run:
-          name: override-test
-          command: ./gradlew --info install test coverage
-#      - run:
-#          name: post-test
-#          command: npm install codecov
-#      - run:
-#          name: ls
-#          command: cd node_modules/codecov; ls -a
-  codecov:
-    docker:
-      - image: circleci/node:4.8.2
-    steps:
-      - run: npm install codecov --save-dev
-      - run:
-          name: post-test
-          command: cd node_modules/codecov/bin/codecov
+
 
 workflows:
   version: 2
+    build:
+  #    machine:
+  #      java:
+  #        version: oraclejdk8
+  #      python:
+  #        version: 2.7.10
+      docker:
+        - image: circleci/android:api-26-alpha
+        - image: circleci/python:3.6.1
+      steps:
+        - checkout
+  #      - run:
+  #          name: pre-dependencies
+  #          command: pip install --user codecov
+        - run: sdkmanager --licenses
+  #      - run:
+  #          name: override-dependencies
+  #          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
+        - run:
+            name: override-test
+            command: ./gradlew --info install test coverage
+  #      - run:
+  #          name: post-test
+  #          command: npm install codecov
+  #      - run:
+  #          name: ls
+  #          command: cd node_modules/codecov; ls -a
+    codecov:
+      docker:
+        - image: circleci/node:4.8.2
+      steps:
+        - run: npm install codecov --save-dev
+        - run:
+            name: post-test
+            command: cd node_modules/codecov/bin/codecov
     test:
       jobs:
         - build
