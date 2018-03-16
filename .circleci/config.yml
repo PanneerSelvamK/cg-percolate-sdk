@@ -32,5 +32,5 @@ jobs:
           command: cd node_modules/codecov/bin; ls -a
       - run:
           name: post-test
-          command: cd node_modules/codecov/bin/codecov
+          command: node_modules/codecov/bin/codecov
 
