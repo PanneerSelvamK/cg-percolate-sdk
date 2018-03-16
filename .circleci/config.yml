@@ -1,7 +1,6 @@
 version: 2
-
 jobs:
-  build-and-test:
+  build:
 #    machine:
 #      java:
 #        version: oraclejdk8
@@ -41,9 +40,7 @@ workflows:
   version: 2
     test:
       jobs:
-        - build-and-test
+        - build
         - codecov:
           requires:
             - build
-
-
