@@ -28,7 +28,7 @@ jobs:
 #      - run:
 #          name: ls
 #          command: cd node_modules/codecov; ls -a
-  codeCov:
+  codecov:
     docker:
       - image: circleci/node:4.8.2
     steps:
@@ -36,5 +36,12 @@ jobs:
       - run:
           name: post-test
           command: cd node_modules/codecov/bin/codecov
+
+workflows:
+  version: 2
+    test:
+      jobs:
+        - build
+        - codecov
 
 
