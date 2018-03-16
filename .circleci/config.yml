@@ -13,9 +13,9 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - checkout
-      - run:
-          name: pre-dependencies
-          command: pip install --user codecov
+#      - run:
+#          name: pre-dependencies
+#          command: pip install --user codecov
       - run: npm install codecov --save-dev
       - run: sdkmanager --licenses
 #      - run:
