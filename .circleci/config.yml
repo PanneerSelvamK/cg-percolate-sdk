@@ -8,25 +8,26 @@ jobs:
 #      python:
 #        version: 2.7.10
     docker:
+      - image: circleci/node:4.8.2
       - image: circleci/android:api-26-alpha
       - image: circleci/python:3.6.1
     steps:
       - checkout
       - run:
           name: pre-dependencies
-          command: pip install --user codecov; sdkmanager --licenses; ./gradlew --info install test coverage; codecov
-#      - run: sdkmanager --install "ndk-bundle"
-#      - run: sdkmanager --licenses
+          command: pip install --user codecov
+      - run: npm install codecov --save-dev
+      - run: sdkmanager --licenses
 #      - run:
 #          name: override-dependencies
 #          command: echo y | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26
-#      - run:
-#          name: override-test
-#          command:
-#      - run:
-#          name: post-test
-#          command: npm install codecov
-#      - run:
-#          name: post-test
-#          command: codecov
+      - run:
+          name: override-test
+          command: ./gradlew --info install test coverage
+      - run:
+          name: post-test
+          command: npm install codecov
+      - run:
+          name: post-test
+          command: codecov
 
