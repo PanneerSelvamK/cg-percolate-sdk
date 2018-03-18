@@ -35,7 +35,7 @@ jobs:
       - run: npm install codecov --save-dev
       - run:
           name: post-test
-          command: cd node_modules/codecov/bin/codecov
+          command: node_modules/codecov/bin/codecov
 
 workflows:
   version: 2
