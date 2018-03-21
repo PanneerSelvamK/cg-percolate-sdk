@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/android:api-26-alpha
+      - image: circleci/python:3.6.1
+    steps:
+      - checkout
+      - run:
+          name: Install codecov
+          command: sudo pip install codecov
+      - run:
+          name: Check Android licenses
+          command: sdkmanager --licenses
+      - run:
+          name: Run tests
+          command: ./gradlew --info install test coverage
+      - run:
+          name: Upload tests reports to codecov
+          command: codecov
