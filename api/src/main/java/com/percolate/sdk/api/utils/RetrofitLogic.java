@@ -1,17 +1,36 @@
 package com.percolate.sdk.api.utils;
 
 import com.percolate.sdk.api.PercolateApi;
-import okhttp3.*;
+
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.CertificatePinner;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Code to hide away Retrofit logic and implementation details. It configures
@@ -127,6 +146,56 @@ public class RetrofitLogic {
                 .build();
         okHttpClientBuilder.certificatePinner(certificatePinner);
         
+        return okHttpClientBuilder.build();
+    }
+
+    public OkHttpClient createDefaultOkHttpClient() {
+        final OkHttpClient.Builder okHttpClientBuilder = new CustomTrust().getClient();
+
+        try {
+            final X509TrustManager x509TrustManager = new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(X509Certificate[] chain, String authType) {
+                }
+
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType) {
+
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[]{};
+                }
+            };
+            final TrustManager[] trustAllCerts = new TrustManager[]{
+                    x509TrustManager
+            };
+
+            // Install the all-trusting trust manager
+
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null, null);
+
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+
+            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            trustManagerFactory.init(keyStore);
+            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+            keyManagerFactory.init(keyStore, "keystore_pass".toCharArray());
+
+            sslContext.init(null, trustAllCerts, new SecureRandom());
+
+            okHttpClientBuilder.sslSocketFactory(sslContext.getSocketFactory(), x509TrustManager)
+                    .hostnameVerifier(new HostnameVerifier() {
+                        @Override
+                        public boolean verify(String hostname, SSLSession session) {
+                            return true;
+                        }
+                    });
+        } catch (IOException | GeneralSecurityException e) {
+            e.printStackTrace();
+        }
         return okHttpClientBuilder.build();
     }
 
