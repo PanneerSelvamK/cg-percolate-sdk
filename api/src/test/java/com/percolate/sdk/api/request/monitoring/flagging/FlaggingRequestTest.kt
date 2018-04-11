@@ -15,9 +15,9 @@ class FlaggingRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(flags)
-        Assert.assertNotNull(flags.data)
-        Assert.assertEquals(5, flags.data.size.toLong())
+        val data = flags?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(5, data!!.size.toLong())
     }
 
     @Test
@@ -28,9 +28,7 @@ class FlaggingRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleFlag)
-        Assert.assertNotNull(singleFlag.data)
-        Assert.assertNotNull(singleFlag.data.id)
+        Assert.assertNotNull(singleFlag?.data?.id)
     }
 
     @Test
@@ -41,9 +39,7 @@ class FlaggingRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleFlag)
-        Assert.assertNotNull(singleFlag.data)
-        Assert.assertNotNull(singleFlag.data.id)
+        Assert.assertNotNull(singleFlag?.data?.id)
     }
 
     @Test
@@ -54,9 +50,7 @@ class FlaggingRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleFlag)
-        Assert.assertNotNull(singleFlag.data)
-        Assert.assertNotNull(singleFlag.data.id)
+        Assert.assertNotNull(singleFlag?.data?.id)
     }
 
     @Test

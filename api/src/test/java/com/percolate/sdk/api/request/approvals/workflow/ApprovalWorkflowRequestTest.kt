@@ -14,8 +14,8 @@ class ApprovalWorkflowRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(workflow)
-        Assert.assertNotNull(workflow.data)
-        Assert.assertEquals(3, workflow.data.size.toLong())
+        val data = workflow?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

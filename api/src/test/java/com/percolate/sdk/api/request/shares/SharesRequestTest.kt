@@ -14,9 +14,9 @@ class SharesRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(shares)
-        Assert.assertNotNull(shares.data)
-        Assert.assertEquals(4, shares.data.size.toLong())
+        val data = shares?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(4, data!!.size.toLong())
     }
 
     @Test
@@ -27,8 +27,6 @@ class SharesRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleShare)
-        Assert.assertNotNull(singleShare.data)
-        Assert.assertNotNull(singleShare.data.id)
+        Assert.assertNotNull(singleShare?.data?.id)
     }
 }

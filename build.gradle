@@ -17,5 +17,5 @@ ext {
     compileSdkVersion = 23
     minSdkVersion = 16
     targetSdkVersion = 23
-    retrofitVersion = "2.1.0"
+    retrofitVersion = "2.3.0"
 }

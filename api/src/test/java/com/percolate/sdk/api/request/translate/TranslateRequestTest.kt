@@ -14,8 +14,8 @@ class TranslateRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(translation)
-        Assert.assertNotNull(translation.data)
-        Assert.assertEquals("Testing", translation.data.translation)
+        val data = translation?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals("Testing", data!!.translation)
     }
 }

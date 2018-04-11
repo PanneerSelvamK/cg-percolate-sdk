@@ -21,8 +21,6 @@ class MediaReleaseRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(mediaReleaseResponse)
-        Assert.assertNotNull(mediaReleaseResponse.data)
-        Assert.assertNotNull(mediaReleaseResponse.data.id)
+        Assert.assertNotNull(mediaReleaseResponse?.data?.id)
     }
 }

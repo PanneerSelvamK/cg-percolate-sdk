@@ -15,9 +15,7 @@ class PushTokenRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(mobileAppPushToken)
-        Assert.assertNotNull(mobileAppPushToken.mobileAppPushTokenData)
-        Assert.assertNotNull(mobileAppPushToken.mobileAppPushTokenData.id)
+        Assert.assertNotNull(mobileAppPushToken?.mobileAppPushTokenData?.id)
     }
 
     @Test

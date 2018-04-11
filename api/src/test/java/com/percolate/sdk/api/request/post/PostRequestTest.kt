@@ -15,9 +15,7 @@ class PostRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(post)
-        Assert.assertNotNull(post.data)
-        Assert.assertNotNull(post.data.id)
+        Assert.assertNotNull(post?.data?.id)
     }
 
     @Test
@@ -28,9 +26,9 @@ class PostRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(posts)
-        Assert.assertNotNull(posts.data)
-        Assert.assertEquals(5, posts.data.size.toLong())
+        val data = posts?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(5, data!!.size.toLong())
     }
 
     @Test
@@ -41,9 +39,7 @@ class PostRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(post)
-        Assert.assertNotNull(post.data)
-        Assert.assertNotNull(post.data.id)
+        Assert.assertNotNull(post?.data?.id)
     }
 
     @Test
@@ -54,9 +50,7 @@ class PostRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(post)
-        Assert.assertNotNull(post.data)
-        Assert.assertNotNull(post.data.id)
+        Assert.assertNotNull(post?.data?.id)
     }
 
     @Test

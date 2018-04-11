@@ -15,9 +15,7 @@ class PostAttachmentRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(attachmentData)
-        Assert.assertNotNull(attachmentData.data)
-        Assert.assertNotNull(attachmentData.data.id)
+        Assert.assertNotNull(attachmentData?.data?.id)
     }
 
     @Test
@@ -28,9 +26,9 @@ class PostAttachmentRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(attachments)
-        Assert.assertNotNull(attachments.data)
-        Assert.assertEquals(2, attachments.data.size.toLong())
+        val data = attachments?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(2, data!!.size.toLong())
     }
 
     @Test
@@ -41,8 +39,7 @@ class PostAttachmentRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(attachmentData)
-        Assert.assertNotNull(attachmentData.data.id)
+        Assert.assertNotNull(attachmentData?.data?.id)
     }
 
     @Test
@@ -53,9 +50,7 @@ class PostAttachmentRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(attachmentData)
-        Assert.assertNotNull(attachmentData.data)
-        Assert.assertNotNull(attachmentData.data.id)
+        Assert.assertNotNull(attachmentData?.data?.id)
     }
 
 }

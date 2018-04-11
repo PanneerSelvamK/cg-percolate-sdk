@@ -16,7 +16,7 @@ class LicenseSettingsRequestTest : BaseApiTest() {
                 .body()
 
         Assert.assertNotNull(licenseSettings)
-        Assert.assertFalse(licenseSettings.paused)
+        Assert.assertFalse(licenseSettings!!.paused)
     }
 
     @Test
@@ -28,6 +28,6 @@ class LicenseSettingsRequestTest : BaseApiTest() {
                 .body()
 
         Assert.assertNotNull(licenseSettings)
-        Assert.assertTrue(licenseSettings.paused)
+        Assert.assertTrue(licenseSettings!!.paused)
     }
 }

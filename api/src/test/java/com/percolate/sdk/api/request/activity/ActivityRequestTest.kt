@@ -14,8 +14,8 @@ class ActivityRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(activityStream)
-        Assert.assertNotNull(activityStream.data)
-        Assert.assertEquals(18, activityStream.data.size.toLong())
+        val data = activityStream?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(18, data!!.size.toLong())
     }
 }

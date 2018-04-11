@@ -14,9 +14,9 @@ class TwitterMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterConversationList)
-        Assert.assertNotNull(twitterConversationList.data)
-        Assert.assertEquals(3, twitterConversationList.data.size.toLong())
+        val data = twitterConversationList?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 
     @Test
@@ -27,9 +27,9 @@ class TwitterMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterConversationThread)
-        Assert.assertNotNull(twitterConversationThread.data)
-        Assert.assertEquals(4, twitterConversationThread.data.size.toLong())
+        val data = twitterConversationThread?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(4, data!!.size.toLong())
     }
 
     @Test
@@ -40,9 +40,9 @@ class TwitterMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterMonitoringObjects)
-        Assert.assertNotNull(twitterMonitoringObjects.data)
-        Assert.assertEquals(8, twitterMonitoringObjects.data.size.toLong())
+        val data = twitterMonitoringObjects?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(8, data!!.size.toLong())
     }
 
     @Test
@@ -53,8 +53,8 @@ class TwitterMonitoringRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(twitterQueries)
-        Assert.assertNotNull(twitterQueries.data)
-        Assert.assertEquals(3, twitterQueries.data.size.toLong())
+        val data = twitterQueries?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

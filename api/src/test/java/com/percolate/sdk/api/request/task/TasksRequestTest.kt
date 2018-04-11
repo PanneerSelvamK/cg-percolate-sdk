@@ -15,9 +15,9 @@ class TasksRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(tasks)
-        Assert.assertNotNull(tasks.data)
-        Assert.assertEquals(3, tasks.data.size.toLong())
+        val data = tasks?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 
     @Test
@@ -28,9 +28,7 @@ class TasksRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleTask)
-        Assert.assertNotNull(singleTask.data)
-        Assert.assertNotNull(singleTask.data.id)
+        Assert.assertNotNull(singleTask?.data?.id)
     }
 
     @Test
@@ -41,9 +39,7 @@ class TasksRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleTask)
-        Assert.assertNotNull(singleTask.data)
-        Assert.assertNotNull(singleTask.data.id)
+        Assert.assertNotNull(singleTask?.data?.id)
     }
 
     @Test

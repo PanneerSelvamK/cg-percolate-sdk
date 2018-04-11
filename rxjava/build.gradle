@@ -44,7 +44,7 @@ artifacts {
 jacocoTestReport {
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/jacocoRxJavaTests.xml"
+        xml.destination file("${buildDir}/jacocoRxJavaTests.xml")
     }
 }
 

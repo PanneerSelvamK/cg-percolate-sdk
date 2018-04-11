@@ -15,9 +15,9 @@ class TermsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(terms)
-        Assert.assertNotNull(terms.data)
-        Assert.assertEquals(5, terms.data.size.toLong())
+        val data = terms?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(5, data!!.size.toLong())
     }
 
     @Test
@@ -28,7 +28,6 @@ class TermsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleTerm)
-        Assert.assertNotNull(singleTerm.data)
+        Assert.assertNotNull(singleTerm?.data)
     }
 }

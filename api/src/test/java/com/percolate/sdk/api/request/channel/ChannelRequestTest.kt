@@ -14,8 +14,8 @@ class ChannelRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(channels)
-        Assert.assertNotNull(channels.data)
-        Assert.assertEquals(3, channels.data.size.toLong())
+        val data = channels?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

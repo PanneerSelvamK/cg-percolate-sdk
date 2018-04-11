@@ -15,8 +15,8 @@ class AutocompleteRequestTest : BaseApiTest() {
                 .execute()
                 .body()
 
-        Assert.assertNotNull(autocomplete)
-        Assert.assertNotNull(autocomplete.data)
-        Assert.assertEquals(3, autocomplete.data.size.toLong())
+        val data = autocomplete?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(3, data!!.size.toLong())
     }
 }

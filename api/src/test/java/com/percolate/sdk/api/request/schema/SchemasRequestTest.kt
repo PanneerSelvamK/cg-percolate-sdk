@@ -14,9 +14,9 @@ class SchemasRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(schemas)
-        Assert.assertNotNull(schemas.data)
-        Assert.assertEquals(9, schemas.data.size.toLong())
+        val data = schemas?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(9, data!!.size.toLong())
     }
 
     @Test
@@ -27,8 +27,8 @@ class SchemasRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleSchema)
-        Assert.assertNotNull(singleSchema.data)
-        Assert.assertNotNull(singleSchema.data.id)
+        val data = singleSchema?.data
+        Assert.assertNotNull(data)
+        Assert.assertNotNull(data!!.id)
     }
 }

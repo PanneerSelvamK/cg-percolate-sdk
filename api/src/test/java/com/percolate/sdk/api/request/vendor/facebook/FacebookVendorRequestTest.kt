@@ -16,7 +16,7 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(successStatus)
-        Assert.assertTrue(successStatus.success.success.toBoolean())
+        Assert.assertTrue(successStatus!!.success.success.toBoolean())
     }
 
     @Test
@@ -27,9 +27,8 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookConversationListData)
-        Assert.assertNotNull(facebookConversationListData.canReply)
-        Assert.assertNotNull(facebookConversationListData.participants)
+        Assert.assertNotNull(facebookConversationListData?.canReply)
+        Assert.assertNotNull(facebookConversationListData?.participants)
     }
 
     @Test
@@ -40,9 +39,9 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookMentions)
-        Assert.assertNotNull(facebookMentions.mentions)
-        Assert.assertEquals(6, facebookMentions.mentions.size.toLong())
+        val mentions = facebookMentions?.mentions
+        Assert.assertNotNull(mentions)
+        Assert.assertEquals(6, mentions!!.size.toLong())
     }
 
     @Test
@@ -53,8 +52,7 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookMessageExtendedData)
-        Assert.assertNotNull(facebookMessageExtendedData.message)
+        Assert.assertNotNull(facebookMessageExtendedData?.message)
     }
 
     @Test
@@ -65,8 +63,7 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(facebookUser)
-        Assert.assertNotNull(facebookUser.id)
+        Assert.assertNotNull(facebookUser?.id)
     }
 
     @Test
@@ -77,9 +74,7 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(FacebookConversationMessageIdData)
-        Assert.assertNotNull(FacebookConversationMessageIdData.data)
-        Assert.assertNotNull(FacebookConversationMessageIdData.data.messageId)
+        Assert.assertNotNull(FacebookConversationMessageIdData?.data?.messageId)
     }
 
     @Test
@@ -91,6 +86,6 @@ class FacebookVendorRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(successStatus)
-        Assert.assertTrue(successStatus.success.success.toBoolean())
+        Assert.assertTrue(successStatus!!.success.success.toBoolean())
     }
 }

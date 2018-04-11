@@ -14,8 +14,8 @@ class CannedResponsesRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(cannedResponses)
-        Assert.assertNotNull(cannedResponses.data)
-        Assert.assertEquals(2, cannedResponses.data.size.toLong())
+        val data = cannedResponses?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(2, data!!.size.toLong())
     }
 }

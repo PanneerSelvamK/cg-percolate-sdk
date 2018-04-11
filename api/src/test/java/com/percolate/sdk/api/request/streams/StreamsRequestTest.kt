@@ -14,8 +14,8 @@ class StreamsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(streams)
-        Assert.assertNotNull(streams.data)
-        Assert.assertEquals(13, streams.data.size.toLong())
+        val data = streams?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(13, data!!.size.toLong())
     }
 }

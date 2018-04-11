@@ -16,9 +16,9 @@ class CampaignSectionsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(campaignSections)
-        Assert.assertNotNull(campaignSections.data)
-        Assert.assertEquals(1, campaignSections.data.size.toLong())
+        val data = campaignSections?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(1, data!!.size.toLong())
     }
 
     @Test
@@ -29,9 +29,9 @@ class CampaignSectionsRequestTest : BaseApiTest() {
                 .execute()
                 .body();
 
-        Assert.assertNotNull(singleCampaignSection)
-        Assert.assertNotNull(singleCampaignSection.data)
-        Assert.assertEquals(singleCampaignSection.data.id, "123")
+        val data = singleCampaignSection?.data
+        Assert.assertNotNull(data)
+        Assert.assertEquals(data!!.id, "123")
     }
 
     @Test
@@ -52,13 +52,14 @@ class CampaignSectionsRequestTest : BaseApiTest() {
                 .body();
 
         Assert.assertNotNull(singleCampaignSection)
-        Assert.assertNotNull(singleCampaignSection.data)
-        Assert.assertEquals(singleCampaignSection.data.id, "campaign_section:111")
-        Assert.assertEquals(singleCampaignSection.data.campaignId, "campaign:222")
-        Assert.assertEquals(singleCampaignSection.data.schemaId, "schema:333")
-        Assert.assertEquals(singleCampaignSection.data.scopeId, "license:444")
-        Assert.assertEquals(singleCampaignSection.data.type, "brief")
-        Assert.assertEquals(singleCampaignSection.data.title, "Brief section 1")
+        val sectionData = singleCampaignSection?.data
+        Assert.assertNotNull(sectionData)
+        Assert.assertEquals(sectionData!!.id, "campaign_section:111")
+        Assert.assertEquals(sectionData.campaignId, "campaign:222")
+        Assert.assertEquals(sectionData.schemaId, "schema:333")
+        Assert.assertEquals(sectionData.scopeId, "license:444")
+        Assert.assertEquals(sectionData.type, "brief")
+        Assert.assertEquals(sectionData.title, "Brief section 1")
     }
 }
 

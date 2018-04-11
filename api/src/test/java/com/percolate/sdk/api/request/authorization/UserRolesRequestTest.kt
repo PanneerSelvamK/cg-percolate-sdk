@@ -34,18 +34,18 @@ class UserRolesRequestTest : BaseApiTest() {
                     .execute()
                     .body();
 
-            Assert.assertNotNull(userRoles)
-            Assert.assertNotNull(userRoles.data)
-            Assert.assertNotNull(userRoles.include)
-            Assert.assertNotNull(userRoles.include.role)
-            Assert.assertEquals(11, userRoles.data.size)
-            Assert.assertEquals(4, userRoles.include.role.size)
+            val data = userRoles?.data
+            val userRolesInclude = userRoles?.include
+            Assert.assertNotNull(data)
+            Assert.assertNotNull(userRolesInclude?.role)
+            Assert.assertEquals(11, data!!.size)
+            Assert.assertEquals(4, userRolesInclude!!.role.size)
 
-            Assert.assertNotNull(userRoles.getRoleForLicense("license:123456", licenses.licenses))
-            Assert.assertNull(userRoles.getRoleForLicense("license:9999", licenses.licenses)) //License does not exist in JSON.
-            Assert.assertTrue(userRoles.hasCapability("license:123456", "view:asset_library", licenses.licenses))
-            Assert.assertFalse(userRoles.hasCapability("license:123456", "does:not:exist", licenses.licenses))
-            Assert.assertFalse(userRoles.hasCapability("license:9999", "view:asset_library", licenses.licenses))
+            Assert.assertNotNull(userRoles.getRoleForLicense("license:123456", licenses?.licenses))
+            Assert.assertNull(userRoles.getRoleForLicense("license:9999", licenses?.licenses)) //License does not exist in JSON.
+            Assert.assertTrue(userRoles.hasCapability("license:123456", "view:asset_library", licenses?.licenses))
+            Assert.assertFalse(userRoles.hasCapability("license:123456", "does:not:exist", licenses?.licenses))
+            Assert.assertFalse(userRoles.hasCapability("license:9999", "view:asset_library", licenses?.licenses))
         }
     }
 }
