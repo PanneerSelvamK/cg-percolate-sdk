@@ -66,8 +66,8 @@ public class RetrofitLogic {
     /**
      * Lazy load Retrofit.
      */
-    protected Retrofit getRetrofit(){
-        if(retrofit == null) {
+    protected Retrofit getRetrofit() {
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(context.getSelectedServer().getTransport() + "://" + context.getSelectedServer().getDomain() + "/")
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -88,18 +88,18 @@ public class RetrofitLogic {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 
         // Enable local proxy (127.0.0.1:8888).
-        if(context.getSelectedServer().getEnableLocalProxy()) {
+        if (context.getSelectedServer().getEnableLocalProxy()) {
             final Proxy proxy = new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved("127.0.0.1", 8888));
             okHttpClientBuilder.proxy(proxy);
         }
 
         // Add custom Interceptors.
-        if(context.getSelectedServer().getCustomInterceptor() != null) {
+        if (context.getSelectedServer().getCustomInterceptor() != null) {
             okHttpClientBuilder.interceptors().add(context.getSelectedServer().getCustomInterceptor());
         }
 
         // Enable caching.
-        if(context.getSelectedServer().getCache() != null) {
+        if (context.getSelectedServer().getCache() != null) {
             okHttpClientBuilder.cache(context.getSelectedServer().getCache());
             forceCacheControlHeaders(okHttpClientBuilder);
         }
@@ -117,8 +117,8 @@ public class RetrofitLogic {
                 Request request = chain.request();
                 Request.Builder builder = request.newBuilder();
                 builder.addHeader("User-Agent", userAgentString);
-                if(StringUtils.isBlank(request.header("Authorization"))) {
-                    if(isApiEndpoint(request.url())) {
+                if (StringUtils.isBlank(request.header("Authorization"))) {
+                    if (isApiEndpoint(request.url())) {
                         if (StringUtils.isNotBlank(context.getOAuthTokenKey())) {
                             builder.addHeader("Authorization", "Bearer " + context.getOAuthTokenKey());
                         } else if (StringUtils.isNotBlank(context.getApiKey())) {
@@ -150,8 +150,14 @@ public class RetrofitLogic {
     }
 
     public OkHttpClient createDefaultOkHttpClient() {
-        final OkHttpClient.Builder okHttpClientBuilder = new CustomTrust().getClient();
+        final OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 
+        //SSL Pinning
+        final CertificatePinner certificatePinner = new CertificatePinner.Builder()
+                // certificate valid till 26th June 2020
+                .add("*.percolate.com", "sha256/gd0jw5Y5beTzcXkn1mrr9b+Dri2kx2IIkML8vU5Xz04=")
+                .build();
+        okHttpClientBuilder.certificatePinner(certificatePinner);
         try {
             final X509TrustManager x509TrustManager = new X509TrustManager() {
                 @Override
@@ -160,7 +166,6 @@ public class RetrofitLogic {
 
                 @Override
                 public void checkServerTrusted(X509Certificate[] chain, String authType) {
-
                 }
 
                 @Override
@@ -173,17 +178,15 @@ public class RetrofitLogic {
             };
 
             // Install the all-trusting trust manager
-
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, null);
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
 
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             keyManagerFactory.init(keyStore, "keystore_pass".toCharArray());
 
+            SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, trustAllCerts, new SecureRandom());
 
             okHttpClientBuilder.sslSocketFactory(sslContext.getSocketFactory(), x509TrustManager)
@@ -220,7 +223,7 @@ public class RetrofitLogic {
                 final boolean isGetRequest = StringUtils.equalsIgnoreCase("GET", request.method());
                 final boolean is200 = originalResponse.code() == 200;
 
-                if(!skipCache && isGetRequest && is200 && ( cacheControlHeader == null || cacheControlHeader.contains("max-age=0") || cacheControlHeader.contains("no-cache")) ){
+                if (!skipCache && isGetRequest && is200 && (cacheControlHeader == null || cacheControlHeader.contains("max-age=0") || cacheControlHeader.contains("no-cache"))) {
                     return originalResponse.newBuilder()
                             .header("Cache-Control", "max-age=" + CACHE_MAX_AGE)
                             .build();
