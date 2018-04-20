@@ -54,6 +54,9 @@ dependencies {
     // Base64 Encoder/Decoder
     api 'net.iharder:base64:2.3.9'
 
+    // Guava
+    api 'com.google.guava:guava:24.1-android'
+
     // Retrofit
     api "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     api "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
