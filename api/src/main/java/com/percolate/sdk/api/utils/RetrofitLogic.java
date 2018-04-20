@@ -9,17 +9,10 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.security.GeneralSecurityException;
-import java.security.KeyStore;
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.CertificatePinner;
@@ -87,6 +80,16 @@ public class RetrofitLogic {
     public OkHttpClient createOkHttpClient() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 
+        try {
+            // Enhance default TrustManager for Percolate certificates.
+            final SSLContext sslContext = SSLContext.getInstance("TLS");
+            final X509TrustManager enhancedTrustManager = PercolateTrustManagerBuilder.build();
+            sslContext.init(null, new TrustManager[]{enhancedTrustManager}, null);
+            okHttpClientBuilder.sslSocketFactory(sslContext.getSocketFactory(), enhancedTrustManager);
+        } catch (GeneralSecurityException e) {
+            System.err.println("Error: RetrofitLogic#createOkHttpClient: Could not enhance trustManager" + e);
+        }
+
         // Enable local proxy (127.0.0.1:8888).
         if (context.getSelectedServer().getEnableLocalProxy()) {
             final Proxy proxy = new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved("127.0.0.1", 8888));
@@ -138,67 +141,15 @@ public class RetrofitLogic {
                         url.pathSegments().get(0).equalsIgnoreCase("api");
             }
         });
-        
+
         //SSL Pinning
         final CertificatePinner certificatePinner = new CertificatePinner.Builder()
                 // certificate valid till 1st May 2019
                 .add("percolate.com", "sha256/evbucDPd+voFR9afo6V93Ffxr2PF1M8oeGSBDC0uVR0=")
-                .build();
-        okHttpClientBuilder.certificatePinner(certificatePinner);
-        
-        return okHttpClientBuilder.build();
-    }
-
-    public OkHttpClient createDefaultOkHttpClient() {
-        final OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
-
-        //SSL Pinning
-        final CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                // certificate valid till 26th June 2020
                 .add("*.percolate.com", "sha256/gd0jw5Y5beTzcXkn1mrr9b+Dri2kx2IIkML8vU5Xz04=")
                 .build();
         okHttpClientBuilder.certificatePinner(certificatePinner);
-        try {
-            final X509TrustManager x509TrustManager = new X509TrustManager() {
-                @Override
-                public void checkClientTrusted(X509Certificate[] chain, String authType) {
-                }
 
-                @Override
-                public void checkServerTrusted(X509Certificate[] chain, String authType) {
-                }
-
-                @Override
-                public X509Certificate[] getAcceptedIssuers() {
-                    return new X509Certificate[]{};
-                }
-            };
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    x509TrustManager
-            };
-
-            // Install the all-trusting trust manager
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keyStore.load(null, null);
-
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            trustManagerFactory.init(keyStore);
-            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-            keyManagerFactory.init(keyStore, "keystore_pass".toCharArray());
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new SecureRandom());
-
-            okHttpClientBuilder.sslSocketFactory(sslContext.getSocketFactory(), x509TrustManager)
-                    .hostnameVerifier(new HostnameVerifier() {
-                        @Override
-                        public boolean verify(String hostname, SSLSession session) {
-                            return true;
-                        }
-                    });
-        } catch (IOException | GeneralSecurityException e) {
-            e.printStackTrace();
-        }
         return okHttpClientBuilder.build();
     }
 
