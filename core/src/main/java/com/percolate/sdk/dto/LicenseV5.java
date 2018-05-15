@@ -24,6 +24,8 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LicenseV5 implements Serializable, HasExtraFields, Comparable<LicenseV5> {
 
+    private static final long serialVersionUID = 712350134350930323L;
+
     @JsonProperty("id")
     protected String id;
 

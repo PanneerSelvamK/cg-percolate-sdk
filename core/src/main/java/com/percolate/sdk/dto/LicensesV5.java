@@ -21,6 +21,8 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LicensesV5 implements Serializable, HasExtraFields {
 
+    private static final long serialVersionUID = 2211262400406164231L;
+
     @JsonProperty("meta")
     protected V5Meta meta = new V5Meta();
 
