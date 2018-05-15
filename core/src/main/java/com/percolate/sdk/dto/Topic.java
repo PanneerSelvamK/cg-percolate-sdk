@@ -32,7 +32,7 @@ public class Topic implements Serializable, HasExtraFields {
     protected String ownerUid;
 
     @JsonProperty("owner")
-    protected License owner;
+    protected LicenseV3 owner;
 
     @JsonIgnore
     protected Map<String, Object> extraFields = new HashMap<>();
@@ -107,11 +107,11 @@ public class Topic implements Serializable, HasExtraFields {
         this.ownerUid = ownerUid;
     }
 
-    public License getOwner() {
+    public LicenseV3 getOwner() {
         return owner;
     }
 
-    public void setOwner(License owner) {
+    public void setOwner(LicenseV3 owner) {
         this.owner = owner;
     }
 

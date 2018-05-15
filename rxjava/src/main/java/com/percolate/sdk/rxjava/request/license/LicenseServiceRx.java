@@ -1,7 +1,7 @@
 package com.percolate.sdk.rxjava.request.license;
 
 import com.percolate.sdk.api.config.Endpoints;
-import com.percolate.sdk.dto.Licenses;
+import com.percolate.sdk.dto.LicensesV3;
 
 import java.util.Map;
 
@@ -15,5 +15,5 @@ import rx.Observable;
 interface LicenseServiceRx {
 
     @GET(Endpoints.API_V3_PATH + "/licenses")
-    Observable<Licenses> get(@QueryMap Map<String, Object> params);
+    Observable<LicensesV3> get(@QueryMap Map<String, Object> params);
 }

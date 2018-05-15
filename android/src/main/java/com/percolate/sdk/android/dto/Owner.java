@@ -3,6 +3,8 @@ package com.percolate.sdk.android.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.percolate.sdk.dto.LicenseV3;
+
 import java.util.HashMap;
 
 /**
@@ -28,7 +30,7 @@ public class Owner extends com.percolate.sdk.dto.Owner implements Parcelable {
     protected Owner(Parcel in) {
         this.type = in.readString();
         this.id = in.readString();
-        this.license = (com.percolate.sdk.dto.License) in.readSerializable();
+        this.license = (LicenseV3) in.readSerializable();
         this.extraFields = new HashMap<>();
         in.readMap(this.extraFields, HashMap.class.getClassLoader());
     }

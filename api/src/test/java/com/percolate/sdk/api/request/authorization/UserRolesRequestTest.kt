@@ -1,7 +1,7 @@
 package com.percolate.sdk.api.request.authorization
 
 import com.percolate.sdk.api.BaseApiTest
-import com.percolate.sdk.api.request.license.LicenseParams
+import com.percolate.sdk.api.request.license.LicenseV3Params
 import org.junit.Assert
 import org.junit.Test
 import java.util.*
@@ -30,7 +30,7 @@ class UserRolesRequestTest : BaseApiTest() {
         fun testGet() {
             val licenses = percolateApi
                     .licenses()
-                    .get(LicenseParams())
+                    .get(LicenseV3Params())
                     .execute()
                     .body();
 
@@ -42,7 +42,7 @@ class UserRolesRequestTest : BaseApiTest() {
             Assert.assertEquals(4, userRolesInclude!!.role.size)
 
             Assert.assertNotNull(userRoles.getRoleForLicense("license:123456", licenses?.licenses))
-            Assert.assertNull(userRoles.getRoleForLicense("license:9999", licenses?.licenses)) //License does not exist in JSON.
+            Assert.assertNull(userRoles.getRoleForLicense("license:9999", licenses?.licenses)) //LicenseV3 does not exist in JSON.
             Assert.assertTrue(userRoles.hasCapability("license:123456", "view:asset_library", licenses?.licenses))
             Assert.assertFalse(userRoles.hasCapability("license:123456", "does:not:exist", licenses?.licenses))
             Assert.assertFalse(userRoles.hasCapability("license:9999", "view:asset_library", licenses?.licenses))

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 
 /**
- * License settings request proxy.
+ * LicenseV3 settings request proxy.
  */
 @SuppressWarnings("unused")
 public class LicenseSettingsRequest {
@@ -21,7 +21,7 @@ public class LicenseSettingsRequest {
     /**
      * Query license settings endpoint.
      *
-     * @param id License ID.
+     * @param id LicenseV3 ID.
      * @return {@link Call} object.
      */
     public Call<LicensePublishingSettings> get(@NotNull final String id) {
@@ -31,7 +31,7 @@ public class LicenseSettingsRequest {
     /**
      * Update license settings.
      *
-     * @param id License ID.
+     * @param id LicenseV3 ID.
      * @param body {@link LicensePublishingSettings} object.
      * @return {@link Call} object.
      */

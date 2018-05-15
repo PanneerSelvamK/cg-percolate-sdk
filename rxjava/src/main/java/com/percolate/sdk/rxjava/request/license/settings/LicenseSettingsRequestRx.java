@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import rx.Observable;
 
 /**
- * License settings request proxy.
+ * LicenseV3 settings request proxy.
  */
 @SuppressWarnings("unused")
 public class LicenseSettingsRequestRx {
@@ -21,7 +21,7 @@ public class LicenseSettingsRequestRx {
     /**
      * Query license settings endpoint.
      *
-     * @param id License ID.
+     * @param id LicenseV3 ID.
      * @return {@link Observable} object.
      */
     public Observable<LicensePublishingSettings> get(@NotNull final String id) {
@@ -31,7 +31,7 @@ public class LicenseSettingsRequestRx {
     /**
      * Update license settings.
      *
-     * @param id License ID.
+     * @param id LicenseV3 ID.
      * @param body {@link LicensePublishingSettings} object.
      * @return {@link Observable} object.
      */

@@ -9,27 +9,27 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Parameters for License request.
+ * Parameters for LicenseV3 request.
  */
 @SuppressWarnings("unused")
-public class LicenseParams {
+public class LicenseV3Params {
     private Map<String, Object> params = new HashMap<>();
 
-    public LicenseParams() {
+    public LicenseV3Params() {
         params.put("limit", "1000");
     }
 
-    public LicenseParams userId(String userId) {
+    public LicenseV3Params userId(String userId) {
         params.put("user_id", userId);
         return this;
     }
 
-    public LicenseParams expandHierarchical(Boolean expandHierarchical) {
+    public LicenseV3Params expandHierarchical(Boolean expandHierarchical) {
         params.put("expand_hierarchical", BooleanUtils.toStringTrueFalse(expandHierarchical));
         return this;
     }
 
-    public LicenseParams types(List<LicenseType> types) {
+    public LicenseV3Params types(List<LicenseType> types) {
         params.put("types", StringUtils.join(types, ",").toLowerCase());
         return this;
     }

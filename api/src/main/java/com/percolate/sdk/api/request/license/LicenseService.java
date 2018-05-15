@@ -1,12 +1,14 @@
 package com.percolate.sdk.api.request.license;
 
 import com.percolate.sdk.api.config.Endpoints;
-import com.percolate.sdk.dto.Licenses;
+import com.percolate.sdk.dto.LicensesV3;
+import com.percolate.sdk.dto.LicensesV5;
+
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
-
-import java.util.Map;
 
 /**
  * Percolate v3/licenses API definition.
@@ -14,5 +16,8 @@ import java.util.Map;
 interface LicenseService {
 
     @GET(Endpoints.API_V3_PATH + "/licenses")
-    Call<Licenses> get(@QueryMap Map<String, Object> params);
+    Call<LicensesV3> getV3(@QueryMap Map<String, Object> params);
+
+    @GET(Endpoints.API_V5_PATH + "/license/")
+    Call<LicensesV5> getV5(@QueryMap Map<String, Object> params);
 }

@@ -52,7 +52,7 @@ public class LicenseChannel implements Serializable, HasExtraFields {
     protected TokenStatus token;
 
     @JsonProperty("license")
-    protected License license;
+    protected LicenseV3 license;
 
     @JsonProperty("channel")
     protected Channel channel;
@@ -156,11 +156,11 @@ public class LicenseChannel implements Serializable, HasExtraFields {
         this.token = token;
     }
 
-    public License getLicense() {
+    public LicenseV3 getLicense() {
         return license;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(LicenseV3 license) {
         this.license = license;
     }
 

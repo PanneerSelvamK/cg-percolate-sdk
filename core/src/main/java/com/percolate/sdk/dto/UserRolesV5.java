@@ -44,7 +44,7 @@ public class UserRolesV5 implements Serializable, HasExtraFields {
      * @return The {@code Role} the user is in, or {@code null}.
      */
     @Nullable
-    public Role getRoleForLicense(final String licenseId, List<License> allLicenses) {
+    public Role getRoleForLicense(final String licenseId, List<LicenseV3> allLicenses) {
         if (data != null && include != null) {
             Map<String, List<String>> map = UserRolesUtils.licensesByAccountID(allLicenses);
             for (UserRole userRole : data) {
@@ -68,7 +68,7 @@ public class UserRolesV5 implements Serializable, HasExtraFields {
      * @param current session licenses.
      * @return {@code true} if the user has the capability for the given scope.
      */
-    public boolean hasCapability(final String licenseId, final String capability, final List<License> licenses) {
+    public boolean hasCapability(final String licenseId, final String capability, final List<LicenseV3> licenses) {
         final Role role = getRoleForLicense(licenseId, licenses);
         if(role != null && role.getCapabilities() != null) {
             for (String roleCapability : role.getCapabilities()) {

@@ -4,7 +4,7 @@ import com.percolate.sdk.api.BaseApiTest
 import org.junit.Assert
 import org.junit.Test
 
-class LicenseUsersRequestTest : BaseApiTest() {
+class LicenseV3UsersRequestTest : BaseApiTest() {
 
     @Test
     fun testGet() {
