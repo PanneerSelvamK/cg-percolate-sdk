@@ -21,15 +21,5 @@ public class PercolateSdkPythonBridge {
         GatewayServer server = new GatewayServer(app);
         System.out.println("Python Bridge Running.  Ctrl+C to stop.");
         server.start();
-        final TermsParams params = new TermsParams();
-        final ArrayList<String> scopeIds = new ArrayList<>();
-        scopeIds.add("license:92039");
-        params.scopeIds(scopeIds);
-        try {
-            final Response<LicensesV5> termsResponse = new PercolateApi("RnpIBYImWviNUnbDox16vHoQ97ZmhAMqBKeaaBoG").licenses().get(new LicenseV5Params("tenant:840")).execute();
-            System.out.println(termsResponse);
-        } catch (IOException e) {
-            System.out.println("CHYBA");
-        }
     }
 }
