@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 import rx.Observable;
 
 /**
- * Percolate v5/task API definition.
+ * Percolate v5/tenant/ API definition.
  */
 interface TenantServiceRx {
 

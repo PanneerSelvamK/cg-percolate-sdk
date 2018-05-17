@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import rx.Observable;
 
 /**
- * Task request proxy.
+ * Tenant request proxy.
  */
 @SuppressWarnings("unused")
 public class TenantRequestRx {

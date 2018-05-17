@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 
 /**
- * Task request proxy.
+ * Tenant request proxy.
  */
 @SuppressWarnings("unused")
 public class TenantRequest {
@@ -21,7 +21,7 @@ public class TenantRequest {
     }
 
     /**
-     * Query v5/tenant endpoint.
+     * Query v5/tenant/ endpoint.
      *
      * @return {@link Call} object.
      */
