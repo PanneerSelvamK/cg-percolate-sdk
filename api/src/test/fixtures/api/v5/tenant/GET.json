@@ -1,0 +1,23 @@
+{
+	"meta": {
+		"query": {},
+		"total": 3
+	},
+	"data": [
+		{
+			"updated_at": "2018-05-16T06:14:58+00:00",
+			"id": "tenant:1",
+			"name": "Percolate testing tenant 1"
+		},
+		{
+			"updated_at": "2018-05-16T06:14:58+00:00",
+			"id": "tenant:2",
+			"name": "Percolate testing tenant 2"
+		},
+		{
+			"updated_at": "2018-05-16T06:14:58+00:00",
+			"id": "tenant:3",
+			"name": "Percolate testing tenant 3"
+		}
+	]
+}

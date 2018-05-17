@@ -49,6 +49,7 @@ import com.percolate.sdk.rxjava.request.schema.SchemasRequestRx;
 import com.percolate.sdk.rxjava.request.shares.SharesRequestRx;
 import com.percolate.sdk.rxjava.request.streams.StreamsRequestRx;
 import com.percolate.sdk.rxjava.request.task.TasksRequestRx;
+import com.percolate.sdk.rxjava.request.tenant.TenantRequestRx;
 import com.percolate.sdk.rxjava.request.terms.TermsRequestRx;
 import com.percolate.sdk.rxjava.request.tokens.TokensRequestRx;
 import com.percolate.sdk.rxjava.request.topics.TopicsRequestRx;
@@ -470,6 +471,14 @@ public class PercolateApiRx extends PercolateApi {
     @SuppressWarnings("unused")
     public TasksRequestRx tasksRx() {
         return new TasksRequestRx(this);
+    }
+
+    /**
+     * @return {@link TenantRequestRx} instance.
+     */
+    @SuppressWarnings("unused")
+    public TenantRequestRx tenantsRx() {
+        return new TenantRequestRx(this);
     }
 
     /**
