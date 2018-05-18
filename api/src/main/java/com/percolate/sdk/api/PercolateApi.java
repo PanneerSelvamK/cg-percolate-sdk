@@ -46,6 +46,7 @@ import com.percolate.sdk.api.request.schema.SchemasRequest;
 import com.percolate.sdk.api.request.shares.SharesRequest;
 import com.percolate.sdk.api.request.streams.StreamsRequest;
 import com.percolate.sdk.api.request.task.TasksRequest;
+import com.percolate.sdk.api.request.tenant.TenantRequest;
 import com.percolate.sdk.api.request.terms.TermsRequest;
 import com.percolate.sdk.api.request.tokens.TokensRequest;
 import com.percolate.sdk.api.request.topics.TopicsRequest;
@@ -542,6 +543,14 @@ public class PercolateApi {
     @SuppressWarnings("unused")
     public TasksRequest tasks() {
         return new TasksRequest(this);
+    }
+
+    /**
+     * @return {@link TenantRequest} instance.
+     */
+    @SuppressWarnings("unused")
+    public TenantRequest tenants() {
+        return new TenantRequest(this);
     }
 
     /**
