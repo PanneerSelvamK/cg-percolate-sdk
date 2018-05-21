@@ -1,12 +1,10 @@
 package com.percolate.sdk.api.request.license;
 
 import com.percolate.sdk.enums.LicenseStatus;
-import com.percolate.sdk.enums.LicenseType;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,11 +28,6 @@ public class LicenseV5Params {
 
     public LicenseV5Params offset(int offset) {
         params.put("offset", offset);
-        return this;
-    }
-
-    public LicenseV5Params types(List<LicenseType> types) {
-        params.put("types", StringUtils.join(types, ",").toLowerCase());
         return this;
     }
 

@@ -29,12 +29,12 @@
 		},
 		{
 			"status": "active",
-			"name": "TestLicense3",
+			"name": "TestBrand1",
 			"updated_at": "2017-11-07T21:29:23+00:00",
-			"parent_id": "brand:1234",
+			"parent_id": null,
 			"timezone": "US/Eastern",
 			"avatar_id": null,
-			"id": "license:1233"
+			"id": "brand:1234"
 		},
 		{
 			"status": "active",
