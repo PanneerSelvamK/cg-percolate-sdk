@@ -5,7 +5,7 @@ import com.percolate.sdk.dto.LicensePublishingSettings
 import org.junit.Assert
 import org.junit.Test
 
-class LicenseSettingsRequestTest : BaseApiTest() {
+class LicenseV3SettingsRequestTest : BaseApiTest() {
 
     @Test
     fun testGet() {

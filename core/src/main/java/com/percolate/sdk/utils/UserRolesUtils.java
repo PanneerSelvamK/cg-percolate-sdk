@@ -1,7 +1,7 @@
 package com.percolate.sdk.utils;
 
 import com.percolate.sdk.dto.UserRole;
-import com.percolate.sdk.dto.License;
+import com.percolate.sdk.dto.LicenseV3;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +29,9 @@ public class UserRolesUtils {
     * Returns mapping of all session license IDs to account ID.
     * @return {String: List<String>}.
     */
-    public static Map<String, List<String>>licensesByAccountID(List<License> licenses) {
+    public static Map<String, List<String>>licensesByAccountID(List<LicenseV3> licenses) {
         Map<String, List<String>> map = new HashMap<String, List<String>>();
-        for (License license : licenses) {
+        for (LicenseV3 license : licenses) {
             String accountID = license.getBrand().getAccountID();
             if (accountID == null || license.getId() == null) {
                 continue;

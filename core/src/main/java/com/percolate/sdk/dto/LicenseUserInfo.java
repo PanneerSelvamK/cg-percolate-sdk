@@ -37,7 +37,7 @@ public class LicenseUserInfo implements Serializable, HasExtraFields {
     protected User user;
 
     @JsonProperty("license")
-    protected License license;
+    protected LicenseV3 license;
 
     @Override
     public boolean equals(Object that) {
@@ -120,11 +120,11 @@ public class LicenseUserInfo implements Serializable, HasExtraFields {
         this.user = user;
     }
 
-    public License getLicense() {
+    public LicenseV3 getLicense() {
         return license;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(LicenseV3 license) {
         this.license = license;
     }
 

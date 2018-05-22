@@ -23,7 +23,7 @@ public class FlagOwner implements Serializable, HasExtraFields {
     protected String type;
 
     @JsonProperty("license")
-    protected License license;
+    protected LicenseV3 license;
 
     @JsonIgnore
     protected Map<String, Object> extraFields = new HashMap<>();
@@ -49,11 +49,11 @@ public class FlagOwner implements Serializable, HasExtraFields {
         this.type = type;
     }
 
-    public License getLicense() {
+    public LicenseV3 getLicense() {
         return license;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(LicenseV3 license) {
         this.license = license;
     }
 

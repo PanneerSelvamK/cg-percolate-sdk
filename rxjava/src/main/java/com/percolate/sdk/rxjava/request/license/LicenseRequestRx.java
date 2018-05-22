@@ -1,16 +1,18 @@
 package com.percolate.sdk.rxjava.request.license;
 
 import com.percolate.sdk.api.PercolateApi;
-import com.percolate.sdk.api.request.license.LicenseParams;
+import com.percolate.sdk.api.request.license.LicenseV3Params;
+import com.percolate.sdk.api.request.license.LicenseV5Params;
 import com.percolate.sdk.api.utils.RetrofitApiFactory;
-import com.percolate.sdk.dto.Licenses;
+import com.percolate.sdk.dto.LicensesV3;
+import com.percolate.sdk.dto.LicensesV5;
 
 import org.jetbrains.annotations.NotNull;
 
 import rx.Observable;
 
 /**
- * License request proxy.
+ * LicenseV3 request proxy.
  */
 @SuppressWarnings("unused")
 public class LicenseRequestRx {
@@ -22,12 +24,22 @@ public class LicenseRequestRx {
     }
 
     /**
-     * Query license endpoint.
+     * Query v3/licenses endpoint.
      *
      * @param params API params.
      * @return {@link Observable} object.
      */
-    public Observable<Licenses> get(@NotNull final LicenseParams params) {
-        return service.get(params.getParams());
+    public Observable<LicensesV3> get(@NotNull final LicenseV3Params params) {
+        return service.getV3(params.getParams());
+    }
+
+    /**
+     * Query v5/license/ endpoint.
+     *
+     * @param params API params.
+     * @return {@link Observable} object.
+     */
+    public Observable<LicensesV5> get(@NotNull final LicenseV5Params params) {
+        return service.getV5(params.getParams());
     }
 }

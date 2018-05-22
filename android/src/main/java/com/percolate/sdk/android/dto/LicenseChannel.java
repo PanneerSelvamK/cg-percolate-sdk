@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import com.percolate.sdk.dto.Channel;
 import com.percolate.sdk.dto.EnabledProperty;
-import com.percolate.sdk.dto.License;
+import com.percolate.sdk.dto.LicenseV3;
 import com.percolate.sdk.dto.TokenStatus;
 
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class LicenseChannel extends com.percolate.sdk.dto.LicenseChannel impleme
         this.monitoring = (EnabledProperty) in.readSerializable();
         this.inbox = (EnabledProperty) in.readSerializable();
         this.token = (TokenStatus) in.readSerializable();
-        this.license = (License) in.readSerializable();
+        this.license = (LicenseV3) in.readSerializable();
         this.channel = (Channel) in.readSerializable();
         this.scopedChannelUid = in.readString();
         this.extraFields = new HashMap<>();

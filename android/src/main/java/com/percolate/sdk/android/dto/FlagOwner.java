@@ -3,6 +3,8 @@ package com.percolate.sdk.android.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.percolate.sdk.dto.LicenseV3;
+
 import java.util.HashMap;
 
 /**
@@ -28,7 +30,7 @@ public class FlagOwner extends com.percolate.sdk.dto.FlagOwner implements Parcel
     protected FlagOwner(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.type = in.readString();
-        this.license = (com.percolate.sdk.dto.License) in.readSerializable();
+        this.license = (LicenseV3) in.readSerializable();
         this.extraFields = new HashMap<>();
         in.readMap(this.extraFields, HashMap.class.getClassLoader());
     }

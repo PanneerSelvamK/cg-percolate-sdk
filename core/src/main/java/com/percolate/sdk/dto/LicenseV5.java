@@ -1,7 +1,12 @@
 package com.percolate.sdk.dto;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.percolate.sdk.interfaces.HasExtraFields;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -17,15 +22,12 @@ import java.util.Map;
 @SuppressWarnings("UnusedDeclaration")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class License implements Serializable, HasExtraFields, Comparable<License> {
+public class LicenseV5 implements Serializable, HasExtraFields, Comparable<LicenseV5> {
 
-    private static final long serialVersionUID = -1659638539635426756L;
+    private static final long serialVersionUID = 712350134350930323L;
 
     @JsonProperty("id")
-    protected Long id;
-
-    @JsonProperty("uid")
-    protected String UID;
+    protected String id;
 
     @JsonProperty("name")
     protected String name;
@@ -33,26 +35,17 @@ public class License implements Serializable, HasExtraFields, Comparable<License
     @JsonProperty("timezone")
     protected String timezone;
 
-    @JsonProperty("virality_threshold")
-    protected String viralityThreshold;
+    @JsonProperty("avatar_id")
+    protected String avatarId;
 
-    @JsonProperty("photo_url")
-    protected String photoUrl;
+    @JsonProperty("parent_id")
+    protected String parentId;
 
-    @JsonProperty("targeting")
-    protected String targeting;
+    @JsonProperty("status")
+    protected String status;
 
-    @JsonProperty("brand")
-    protected Brand brand;
-
-    @JsonProperty("brand_id")
-    protected Long brandId;
-
-    @JsonProperty("state")
-    protected String state;
-
-    @JsonProperty("type")
-    protected String type;
+    @JsonProperty("updated_at")
+    protected String updatedAt;
 
     protected List<UserRolesLicenseData> userRolesLicenseData; //Set in some apps after calling ApiGetUserRoles
 
@@ -68,7 +61,7 @@ public class License implements Serializable, HasExtraFields, Comparable<License
      * Sorts licenses alphabetically by license name
      */
     @Override
-    public int compareTo(@NotNull License anotherLicense) {
+    public int compareTo(@NotNull LicenseV5 anotherLicense) {
         if (name != null && anotherLicense.getName() != null) {
             return this.name.compareToIgnoreCase(anotherLicense.getName());
         } else {
@@ -80,21 +73,13 @@ public class License implements Serializable, HasExtraFields, Comparable<License
     public boolean equals(Object that) {
         if (this == that) return true;
         if (that == null || getClass() != that.getClass()) return false;
-        License license = (License) that;
-        if(StringUtils.isNotBlank(UID)) {
-            return new EqualsBuilder().append(UID, license.UID).isEquals();
-        } else {
+        LicenseV5 license = (LicenseV5) that;
             return new EqualsBuilder().append(id, license.id).isEquals();
-        }
     }
 
     @Override
     public int hashCode() {
-        if(StringUtils.isNotBlank(UID)) {
-            return new HashCodeBuilder(17, 37).append(UID).toHashCode();
-        } else {
             return new HashCodeBuilder(17, 37).append(id).toHashCode();
-        }
     }
 
     /**
@@ -114,14 +99,14 @@ public class License implements Serializable, HasExtraFields, Comparable<License
         return false;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -138,54 +123,6 @@ public class License implements Serializable, HasExtraFields, Comparable<License
         this.timezone = timezone;
     }
 
-    public String getViralityThreshold() {
-        return viralityThreshold;
-    }
-
-    public void setViralityThreshold(String viralityThreshold) {
-        this.viralityThreshold = viralityThreshold;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-    public String getTargeting() {
-        return targeting;
-    }
-
-    public void setTargeting(String targeting) {
-        this.targeting = targeting;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Long getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
-    }
-
-    public String getUID() {
-        return UID;
-    }
-
-    public void setUID(String uID) {
-        UID = uID;
-    }
-
     public List<UserRolesLicenseData> getUserRolesLicenseData() {
         return userRolesLicenseData;
     }
@@ -194,20 +131,36 @@ public class License implements Serializable, HasExtraFields, Comparable<License
         this.userRolesLicenseData = userRolesLicenseData;
     }
 
-    public String getState() {
-        return state;
+    public String getAvatarId() {
+        return avatarId;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setAvatarId(String avatarId) {
+        this.avatarId = avatarId;
     }
 
-    public String getType() {
-        return type;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

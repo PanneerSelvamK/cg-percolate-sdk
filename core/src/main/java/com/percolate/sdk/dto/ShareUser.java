@@ -23,7 +23,7 @@ public class ShareUser implements Serializable, HasExtraFields {
     protected String UID;
 
     @JsonProperty("license")
-    protected License license;
+    protected LicenseV3 license;
 
     @JsonProperty("type")
     protected String type;
@@ -44,11 +44,11 @@ public class ShareUser implements Serializable, HasExtraFields {
         this.id = id;
     }
 
-    public License getLicense() {
+    public LicenseV3 getLicense() {
         return license;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(LicenseV3 license) {
         this.license = license;
     }
 

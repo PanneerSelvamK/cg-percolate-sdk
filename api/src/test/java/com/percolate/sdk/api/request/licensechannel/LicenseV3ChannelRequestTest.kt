@@ -5,7 +5,7 @@ import com.percolate.sdk.dto.LicenseChannel
 import org.junit.Assert
 import org.junit.Test
 
-class LicenseChannelRequestTest : BaseApiTest() {
+class LicenseV3ChannelRequestTest : BaseApiTest() {
 
     @Test
     fun testGet() {

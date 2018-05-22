@@ -3,6 +3,8 @@ package com.percolate.sdk.android.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.percolate.sdk.dto.LicenseV3;
+
 import java.util.HashMap;
 
 /**
@@ -29,7 +31,7 @@ public class ShareUser extends com.percolate.sdk.dto.ShareUser implements Parcel
     protected ShareUser(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.UID = in.readString();
-        this.license = (com.percolate.sdk.dto.License) in.readSerializable();
+        this.license = (LicenseV3) in.readSerializable();
         this.type = in.readString();
         this.extraFields = new HashMap<>();
         in.readMap(this.extraFields, HashMap.class.getClassLoader());

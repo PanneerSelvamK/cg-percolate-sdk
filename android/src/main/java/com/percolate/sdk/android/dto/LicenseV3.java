@@ -2,6 +2,7 @@ package com.percolate.sdk.android.dto;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import com.percolate.sdk.dto.UserRolesLicenseData;
 
 import java.util.ArrayList;
@@ -9,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Android version of {@link com.percolate.sdk.dto.License}.  Implements {@link Parcelable}
+ * Android version of {@link com.percolate.sdk.dto.LicenseV3}.  Implements {@link Parcelable}
  */
-public class License extends com.percolate.sdk.dto.License implements Parcelable {
+public class LicenseV3 extends com.percolate.sdk.dto.LicenseV3 implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
@@ -34,10 +35,10 @@ public class License extends com.percolate.sdk.dto.License implements Parcelable
         dest.writeMap(this.extraFields);
     }
 
-    public License() {
+    public LicenseV3() {
     }
 
-    protected License(Parcel in) {
+    protected LicenseV3(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.UID = in.readString();
         this.name = in.readString();
@@ -55,13 +56,13 @@ public class License extends com.percolate.sdk.dto.License implements Parcelable
         in.readMap(this.extraFields, HashMap.class.getClassLoader());
     }
 
-    public static final Creator<License> CREATOR = new Creator<License>() {
-        public License createFromParcel(Parcel source) {
-            return new License(source);
+    public static final Creator<com.percolate.sdk.android.dto.LicenseV3> CREATOR = new Creator<com.percolate.sdk.android.dto.LicenseV3>() {
+        public com.percolate.sdk.android.dto.LicenseV3 createFromParcel(Parcel source) {
+            return new com.percolate.sdk.android.dto.LicenseV3(source);
         }
 
-        public License[] newArray(int size) {
-            return new License[size];
+        public com.percolate.sdk.android.dto.LicenseV3[] newArray(int size) {
+            return new com.percolate.sdk.android.dto.LicenseV3[size];
         }
     };
 }

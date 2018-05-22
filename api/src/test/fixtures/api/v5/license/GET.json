@@ -1,0 +1,49 @@
+{
+	"meta": {
+		"query": {
+			"tenant_id": "tenant:123",
+			"limit": 100,
+			"statuses": "active",
+			"offset": 0
+		},
+		"total": 4
+	},
+	"data": [
+		{
+			"status": "active",
+			"name": "TestLicense1",
+			"updated_at": "2017-11-07T21:29:23+00:00",
+			"parent_id": "brand:1234",
+			"timezone": "US/Eastern",
+			"avatar_id": null,
+			"id": "license:1231"
+		},
+		{
+			"status": "active",
+			"name": "TestLicense2",
+			"updated_at": "2017-11-07T21:29:23+00:00",
+			"parent_id": "brand:1234",
+			"timezone": "US/Eastern",
+			"avatar_id": null,
+			"id": "license:1232"
+		},
+		{
+			"status": "active",
+			"name": "TestBrand1",
+			"updated_at": "2017-11-07T21:29:23+00:00",
+			"parent_id": null,
+			"timezone": "US/Eastern",
+			"avatar_id": null,
+			"id": "brand:1234"
+		},
+		{
+			"status": "active",
+			"name": "TestLicense4",
+			"updated_at": "2017-11-07T21:29:23+00:00",
+			"parent_id": "brand:1234",
+			"timezone": "US/Eastern",
+			"avatar_id": null,
+			"id": "license:1234"
+		}
+	]
+}

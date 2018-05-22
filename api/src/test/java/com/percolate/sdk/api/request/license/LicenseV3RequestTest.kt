@@ -4,13 +4,13 @@ import com.percolate.sdk.api.BaseApiTest
 import org.junit.Assert
 import org.junit.Test
 
-class LicenseRequestTest : BaseApiTest() {
+class LicenseV3RequestTest : BaseApiTest() {
 
     @Test
     fun testGet() {
         val licenses = percolateApi
                 .licenses()
-                .get(LicenseParams())
+                .get(LicenseV3Params())
                 .execute()
                 .body();
 
