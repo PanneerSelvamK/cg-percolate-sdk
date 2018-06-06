@@ -62,6 +62,9 @@ dependencies {
     api "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
     api "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
 
+    //Android http client
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+
     testImplementation 'junit:junit:4.12'
 
     // Kotlin Standard Library
