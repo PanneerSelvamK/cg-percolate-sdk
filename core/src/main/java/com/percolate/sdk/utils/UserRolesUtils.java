@@ -1,11 +1,12 @@
 package com.percolate.sdk.utils;
 
-import com.percolate.sdk.dto.UserRole;
 import com.percolate.sdk.dto.LicenseV3;
+import com.percolate.sdk.dto.UserRole;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 
 public class UserRolesUtils {
 
@@ -26,17 +27,18 @@ public class UserRolesUtils {
     }
 
     /**
-    * Returns mapping of all session license IDs to account ID.
-    * @return {String: List<String>}.
-    */
-    public static Map<String, List<String>>licensesByAccountID(List<LicenseV3> licenses) {
+     * Returns mapping of all session license IDs to account ID.
+     * @return {String: List<String>}.
+     */
+    public static Map<String, List<String>> licensesByAccountID(List<LicenseV3> licenses) {
         Map<String, List<String>> map = new HashMap<String, List<String>>();
         for (LicenseV3 license : licenses) {
-            String accountID = license.getBrand().getAccountID();
-            if (accountID == null || license.getId() == null) {
+            if (license.getBrand() == null) {
                 continue;
-            } else {
-                List<String> UIDs = map.get(accountID) != null? map.get(accountID) : new ArrayList<String>();
+            }
+            final String accountID = license.getBrand().getAccountID();
+            if (accountID != null && license.getId() != null) {
+                final List<String> UIDs = map.get(accountID) != null ? map.get(accountID) : new ArrayList<String>();
                 UIDs.add("license:" + license.getId());
                 map.put(accountID, UIDs);
             }

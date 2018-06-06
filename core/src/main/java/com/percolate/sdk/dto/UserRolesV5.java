@@ -40,7 +40,7 @@ public class UserRolesV5 implements Serializable, HasExtraFields {
     /**
      * Returns the role that the user has for the given license and given session licenses.
      * @param licenseId Scope UID.
-     * @param current session licenses.
+     * @param allLicenses session licenses.
      * @return The {@code Role} the user is in, or {@code null}.
      */
     @Nullable
@@ -65,7 +65,7 @@ public class UserRolesV5 implements Serializable, HasExtraFields {
      * Checks if the {@link #include} data contains the given capability for the given license.
      * @param licenseId Scope UID.
      * @param capability Capability to check for
-     * @param current session licenses.
+     * @param licenses session licenses.
      * @return {@code true} if the user has the capability for the given scope.
      */
     public boolean hasCapability(final String licenseId, final String capability, final List<LicenseV3> licenses) {
