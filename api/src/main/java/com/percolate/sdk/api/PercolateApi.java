@@ -57,6 +57,7 @@ import com.percolate.sdk.api.request.variants.VariantsRequest;
 import com.percolate.sdk.api.request.vendor.facebook.FacebookVendorRequest;
 import com.percolate.sdk.api.request.vendor.instagram.InstagramVendorRequest;
 import com.percolate.sdk.api.request.vendor.twitter.TwitterVendorRequest;
+import com.percolate.sdk.api.utils.ProjectVersion;
 import com.percolate.sdk.api.utils.RetrofitApiFactory;
 import com.percolate.sdk.api.utils.RetrofitLogic;
 
@@ -70,7 +71,7 @@ public class PercolateApi {
     /**
      * Java API SDK Version Number.
      */
-    public static String VERSION_NUMBER = "0.1";
+    public static final String VERSION_NUMBER = ProjectVersion.VERSION;
 
     /**
      * User API key.
@@ -86,6 +87,11 @@ public class PercolateApi {
      * Selected server config.
      */
     private PercolateServer selectedServer;
+
+    /**
+     * UserAgent prefix.
+     */
+    private String userAgentPrefix;
 
     /**
      * Default server config that will be used if nothing else is provided.
@@ -118,12 +124,29 @@ public class PercolateApi {
     /**
      * Create percolate API instance that accesses the given {@link PercolateServer} endpoint.
      *
-     * @param apiKey API key.
+     * @param apiKey         API key.
      * @param selectedServer Server config.
      */
     public PercolateApi(@Nullable String apiKey, @Nullable PercolateServer selectedServer) {
         this.apiKey = apiKey;
-        if(selectedServer != null) {
+        if (selectedServer != null) {
+            this.selectedServer = selectedServer;
+        } else {
+            this.selectedServer = PROD;
+        }
+    }
+
+    /**
+     * Create percolate API instance that accesses the given {@link PercolateServer} endpoint.
+     *
+     * @param apiKey          API key.
+     * @param selectedServer  Server config.
+     * @param userAgentPrefix userAgent prefix.
+     */
+    public PercolateApi(@Nullable String apiKey, @Nullable PercolateServer selectedServer, @Nullable String userAgentPrefix) {
+        this.apiKey = apiKey;
+        this.userAgentPrefix = userAgentPrefix;
+        if (selectedServer != null) {
             this.selectedServer = selectedServer;
         } else {
             this.selectedServer = PROD;
@@ -139,6 +162,7 @@ public class PercolateApi {
 
     /**
      * Set API Key.
+     *
      * @param apiKey API Key.
      */
     public void setApiKey(String apiKey) {
@@ -153,7 +177,8 @@ public class PercolateApi {
     }
 
     /**
-     * set OAuth2 Token key.
+     * Set OAuth2 Token key.
+     *
      * @param oAuthTokenKey OAuth2 Token key.
      */
     public void setOAuthTokenKey(String oAuthTokenKey) {
@@ -169,6 +194,19 @@ public class PercolateApi {
 
     public void setSelectedServer(PercolateServer selectedServer) {
         this.selectedServer = selectedServer;
+        RetrofitLogic.reset();
+        RetrofitApiFactory.reset();
+    }
+
+    /**
+     * @return userAgent prefix String.
+     */
+    public String getUserAgentPrefix() {
+        return userAgentPrefix;
+    }
+
+    public void setUserAgentPrefix(String userAgentPrefix) {
+        this.userAgentPrefix = userAgentPrefix;
         RetrofitLogic.reset();
         RetrofitApiFactory.reset();
     }

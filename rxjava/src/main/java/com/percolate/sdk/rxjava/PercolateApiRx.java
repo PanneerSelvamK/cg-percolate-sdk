@@ -71,7 +71,7 @@ public class PercolateApiRx extends PercolateApi {
      * Create percolate API instance that accesses {@code percolate.com} endpoint.
      */
     public PercolateApiRx() {
-        this(null, null);
+        this(null, null, null);
     }
 
     /**
@@ -93,11 +93,30 @@ public class PercolateApiRx extends PercolateApi {
     /**
      * Create percolateRx API instance that accesses the given {@link PercolateServer} endpoint.
      *
-     * @param apiKey API key.
+     * @param apiKey         API key.
      * @param selectedServer Server config.
      */
     public PercolateApiRx(@Nullable String apiKey, @Nullable PercolateServer selectedServer) {
         super(apiKey, selectedServer);
+    }
+
+
+    /**
+     * Create percolate API instance that uses the given userAgent prefix.
+     */
+    public PercolateApiRx(@Nullable String apiKey, @Nullable String userAgentPrefix) {
+        super(apiKey, null, userAgentPrefix);
+    }
+
+    /**
+     * Create percolateRx API instance that accesses the given {@link PercolateServer} endpoint.
+     *
+     * @param apiKey          API key.
+     * @param selectedServer  Server config.
+     * @param userAgentPrefix userAgent prefix.
+     */
+    public PercolateApiRx(@Nullable String apiKey, @Nullable PercolateServer selectedServer, @Nullable String userAgentPrefix) {
+        super(apiKey, selectedServer, userAgentPrefix);
     }
 
     /**

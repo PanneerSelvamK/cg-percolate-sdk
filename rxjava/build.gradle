@@ -7,7 +7,6 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 group 'com.percolate.sdk'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
