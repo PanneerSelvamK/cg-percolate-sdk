@@ -47,13 +47,16 @@ public class RetrofitLogic {
     /**
      * User Agent String.
      */
-    private final String userAgentString = "percolate-java-sdk-" + PercolateApi.VERSION_NUMBER;
+    private String userAgentString = "percolate-java-sdk/v" + PercolateApi.VERSION_NUMBER;
 
     /**
      * Construct instance.
      */
     public RetrofitLogic(@NotNull PercolateApi context) {
         this.context = context;
+        if(context.getUserAgentPrefix() != null) {
+            userAgentString = context.getUserAgentPrefix().concat(userAgentString);
+        }
     }
 
     /**

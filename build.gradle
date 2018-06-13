@@ -19,3 +19,19 @@ ext {
     targetSdkVersion = 23
     retrofitVersion = "2.3.0"
 }
+
+/*
+ * Gets the version name from the latest Git tag
+ */
+def getVersionFromGit = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+allprojects {
+    version = getVersionFromGit()
+}

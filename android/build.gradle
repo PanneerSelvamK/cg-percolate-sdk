@@ -4,7 +4,6 @@ apply plugin: 'jacoco'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group 'com.percolate.sdk'
-version '1.0-SNAPSHOT'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -26,10 +25,6 @@ android {
 
 repositories {
     mavenCentral()
-}
-
-jacoco {
-    version = '0.7.6.201602180812'
 }
 
 task coverage(type:JacocoReport, dependsOn: "testDebugUnitTest") {
