@@ -94,9 +94,12 @@ public class RetrofitLogic {
         }
 
         // Enable local proxy (127.0.0.1:8888).
+        // CG Customized proxy server
         if (context.getSelectedServer().getEnableLocalProxy()) {
-            final Proxy proxy = new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved("127.0.0.1", 8888));
+        	System.out.println("Configuring CG proxy...");
+            final Proxy proxy = new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved("phx1cache", 8080));
             okHttpClientBuilder.proxy(proxy);
+            System.out.println("CG proxy configuration created.");
         }
 
         // Add custom Interceptors.
