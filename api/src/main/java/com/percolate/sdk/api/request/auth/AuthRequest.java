@@ -28,7 +28,7 @@ public class AuthRequest {
      * @return {@link Call} object.
      */
     public Call<AuthorizeData> authorize(@NotNull final AuthorizePostData authorizePostData) {
-        return service.authorize(authorizePostData.getExt().getClientId(), authorizePostData);
+        return service.authorize("Client-ID " + authorizePostData.getExt().getClientId(), authorizePostData);
     }
 
     /**
